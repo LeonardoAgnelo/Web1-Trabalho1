@@ -10,7 +10,7 @@ import br.ufscar.dc.dsw.domain.Usuario;
 
 public class UsuarioDAO extends GenericDAO{
 
-    public void insert(Usuario Usuario){
+    public void insert(Usuario usuario){
         String sql = "INSERT INTO Usuario (id, nome, email, senha tipo) VALUES (?, ?, ?, ?, ?) ";
 
         try{
@@ -18,11 +18,11 @@ public class UsuarioDAO extends GenericDAO{
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement = conn.prepareStatement(sql);
-            statement.setInt(1, Usuario.getId());
-            statement.setString(2, Usuario.getNome());
-            statement.setString(3, Usuario.getEmail());
-            statement.setString(4, Usuario.getSenha());
-            statement.setString(5, Usuario.getTipo());
+            statement.setInt(1, usuario.getId());
+            statement.setString(2, usuario.getNome());
+            statement.setString(3, usuario.getEmail());
+            statement.setString(4, usuario.getSenha());
+            statement.setString(5, usuario.getTipo());
             statement.executeUpdate();
 
             statement.close();
@@ -31,14 +31,14 @@ public class UsuarioDAO extends GenericDAO{
             throw new RuntimeException(e);
         }
     }
-    public void delete(Usuario Usuario){
+    public void delete(Usuario usuario){
         String sql = "DELETE FROM Usuario where id = ?";
 
         try{
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setInt(1, Usuario.getId());
+            statement.setInt(1, usuario.getId());
             statement.executeUpdate();
 
             statement.close();
