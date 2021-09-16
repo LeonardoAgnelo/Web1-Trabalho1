@@ -15,7 +15,7 @@ CREATE TABLE `cliente` (
 	`cpf` varchar(255) NOT NULL UNIQUE,
 	`telefone` varchar(255) NOT NULL,
 	`sexo` ENUM('masculino','feminino') NOT NULL,
-	`data_nascimento` varchar(255) NOT NULL,
+	`data_nascimento` TIMESTAMP NOT NULL,
 	`id_usuario` INT NOT NULL,
 	PRIMARY KEY (`id_usuario`)
 );
