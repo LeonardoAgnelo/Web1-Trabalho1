@@ -30,7 +30,6 @@ public class UsuarioDAO extends GenericDAO{
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
-        
     }
     public void delete(Usuario Usuario){
         String sql = "DELETE FROM Usuario where id = ?";
