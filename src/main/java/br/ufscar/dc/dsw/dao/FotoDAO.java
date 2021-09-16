@@ -20,8 +20,8 @@ public class FotoDAO extends GenericDAO {
             PreparedStatement statement = conn.prepareStatement(sql);;
 
             statement = conn.prepareStatement(sql);
-            statement.setString(1, usuario.getIdPacote());
-            statement.setString(2, usuario.getUrl());
+            statement.setString(1, foto.getIdPacote());
+            statement.setString(2, foto.getUrl());
             statement.executeUpdate();
 
             statement.close();
