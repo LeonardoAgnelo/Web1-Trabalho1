@@ -27,6 +27,19 @@ public class PacoteTuristico {
         this.setFotos(fotos);
     }
 
+    public PacoteTuristico(Integer id, Agencia agencia, Destino destino, Timestamp dataPartida, Integer duracaoDias,
+            Float valor, String descricao, Integer qtdFotos) {
+        super();
+        this.setId(id);
+        this.setAgencia(agencia);
+        this.setDestino(destino);
+        this.setDataPartida(dataPartida);
+        this.setDuracaoDias(duracaoDias);
+        this.setValor(valor);
+        this.setDescricao(descricao);
+        this.setQtdFotos(qtdFotos);
+    }
+
     public PacoteTuristico(Agencia agencia, Destino destino, Timestamp dataPartida, Integer duracaoDias,
             Float valor, String descricao, Integer qtdFotos, List<Foto> fotos) {
         super();
