@@ -1,4 +1,4 @@
-package br.ufscar.dc.dsw.Domain;
+package br.ufscar.dc.dsw.domain;
 
 import java.sql.Timestamp;
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.ufscar.dc.dsw.DAO;
+package br.ufscar.dc.dsw.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

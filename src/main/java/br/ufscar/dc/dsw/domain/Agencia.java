@@ -1,4 +1,4 @@
-package br.ufscar.dc.dsw.Domain;
+package br.ufscar.dc.dsw.domain;
 
 public class Agencia extends Usuario {
     private String cnpj;
