@@ -13,14 +13,14 @@ import br.ufscar.dc.dsw.domain.Foto;
 public class FotoDAO extends GenericDAO {
 
     public void insert(Foto foto) {
-         String sql = "INSERT INTO foto (id_pacote, url) VALUES (?, ?)";
+        String sql = "INSERT INTO foto (id_pacote, url) VALUES (?, ?)";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);;
 
             statement = conn.prepareStatement(sql);
-            statement.setString(1, foto.getIdPacote());
+            statement.setInt(1, foto.getIdPacote());
             statement.setString(2, foto.getUrl());
             statement.executeUpdate();
 
@@ -31,11 +31,11 @@ public class FotoDAO extends GenericDAO {
         }
     }
 
-    public List<Foto> getAll() {
+    public List<Foto> getAllById(Integer idPacote) {
 
         List<Foto> listaFoto = new ArrayList<>();
 
-        String sql = "SELECT * from foto l, pacote_turistico e where l.id_pacote = e.id";
+        String sql = "SELECT * from foto l e where id_pacote = " + idPacote;
 
         try {
             Connection conn = this.getConnection();
@@ -43,11 +43,10 @@ public class FotoDAO extends GenericDAO {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                Long id = resultSet.getLong("id");
+                Integer id = resultSet.getInt("id_pacote");
                 String url = resultSet.getString("url");
     
-                PacoteTuristico pacote = new PacoteTuristico(id, cnpj_agencia);
-                Foto foto = new Foto(pacote_id, url);
+                Foto foto = new Foto(id, url);
                 listaFoto.add(foto);
             }
 

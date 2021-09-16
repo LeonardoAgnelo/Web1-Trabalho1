@@ -11,6 +11,7 @@ import java.util.List;
 
 import br.ufscar.dc.dsw.domain.Agencia;
 import br.ufscar.dc.dsw.domain.Destino;
+import br.ufscar.dc.dsw.domain.Foto;
 import br.ufscar.dc.dsw.domain.PacoteTuristico;
 
 public class PacoteTuristicoDAO extends GenericDAO {
@@ -84,7 +85,9 @@ public class PacoteTuristicoDAO extends GenericDAO {
 
                 Destino destinoModel = new Destino(destinoCidade, destinoEstado, destinoPais);
 
-                PacoteTuristico pacoteTuristico = new PacoteTuristico(id, agenciaDomain, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos);
+                List<Foto> fotos = new FotoDAO().getAllById(id);
+
+                PacoteTuristico pacoteTuristico = new PacoteTuristico(id, agenciaDomain, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos, fotos);
                 listaPacotesTuristicos.add(pacoteTuristico);
             }
 
