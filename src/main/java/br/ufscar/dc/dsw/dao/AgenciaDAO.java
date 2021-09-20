@@ -9,58 +9,60 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufscar.dc.dsw.domain.Agencia;
 
-import br.ufscar.dc.dsw.domain.Cliente;
+public class AgenciaDAO extends GenericDAO {
 
-public class ClienteDAO extends GenericDAO {
+    public void insert(Agencia agencia) {
 
-    public void insert(Cliente cliente){
-        String sql = "INSERTO INTO cliente (cpf, telefone, sexo, data_nascimento, id_usuario) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Agencia (cnpj, nome, id_usuario) VALUES (?, ?, ?)";
         //inserir na tabela usuario do banco de dados
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.insert(cliente);
-        Integer id = usuarioDAO.getIdByEmail(cliente.getEmail());
+        usuarioDAO.insert(agencia);
+        Integer id = usuarioDAO.getIdByEmail(agencia.getEmail());
 
-        try{
+        try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement = conn.prepareStatement(sql);
-            statement.setString(1, cliente.getCpf());
-            statement.setString(2, cliente.getTelefone());
-            statement.setString(3, cliente.getSexo());
-            statement.setTimestamp(4, cliente.getDataNascimento());
-            statement.setInt(5, id);
+            statement.setString(1, agencia.getCnpj());
+            statement.setString(2, agencia.getDescricao());
+            statement.setInt(3, id);
             statement.executeUpdate();
 
             statement.close();
             conn.close();
-        }catch(SQLException e){
+            
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public void delete(Cliente cliente){
-        String sql = "DELETE FROM cliente WHERE id = ?";
 
-        try{
+    public void delete(Agencia agencia) {
+        String sql = "DELETE FROM agencia where id_usuario = ?";
+
+        try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setInt(1, cliente.getId());
+            statement.setInt(1, agencia.getId());
             statement.executeUpdate();
 
             statement.close();
             conn.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public List<Cliente> getAll() {
-        List<Cliente> listaCliente = new ArrayList<>();
-        String sql = "SELECT FROM cliente c ORDER BY id";
+
+    public List<Agencia> getAll() {
+        List<Agencia> listaAgencia = new ArrayList<>();
+        String sql = "SELECT FROM agencia a ORDER BY id";
 
         try{
             Connection conn = getConnection();
@@ -73,13 +75,12 @@ public class ClienteDAO extends GenericDAO {
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
                 String tipo = resultSet.getString("tipo");
-                String cpf = resultSet.getString("cpf");
-                String telefone = resultSet.getString("telefone");
-                String sexo = resultSet.getString("sexo");
+                String cnpj = resultSet.getString("cnpj");
+                String descricao = resultSet.getString("descricao");
                 Timestamp dataNascimento = resultSet.getTimestamp("dataNascimento");
-                Cliente cliente = new Cliente(id, nome, email, senha, tipo, cpf, telefone, sexo, dataNascimento);
+                Agencia agencia = new Agencia(id, nome, email, senha, tipo, cnpj, descricao);
 
-                listaCliente.add(cliente);
+                listaAgencia.add(agencia);
             }
             resultSet.close();
             statement.close();
@@ -87,6 +88,6 @@ public class ClienteDAO extends GenericDAO {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
-        return listaCliente;
+        return listaAgencia;
     }
 }
