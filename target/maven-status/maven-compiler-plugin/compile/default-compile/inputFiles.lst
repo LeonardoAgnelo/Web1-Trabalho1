@@ -7,5 +7,6 @@
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/PacoteTuristico.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Cliente.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/FotoDAO.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/AgenciaDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/GenericDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Agencia.java

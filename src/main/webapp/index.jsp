@@ -12,9 +12,9 @@
 <body>
     <div class="home-container box">
         <nav class="navbar-container">
-            <img src="assets/logo.svg" />
+            <img class="logo" src="assets/logo.svg" />
             <div class="right-side">
-                <a href="/login" class="botao-login">
+                <a href="login.jsp" class="botao-login">
                     Login
                 </a>
                 <a href="/cadastro" class="botao-cadastro">

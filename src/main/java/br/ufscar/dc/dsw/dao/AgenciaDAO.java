@@ -77,7 +77,6 @@ public class AgenciaDAO extends GenericDAO {
                 String tipo = resultSet.getString("tipo");
                 String cnpj = resultSet.getString("cnpj");
                 String descricao = resultSet.getString("descricao");
-                Timestamp dataNascimento = resultSet.getTimestamp("dataNascimento");
                 Agencia agencia = new Agencia(id, nome, email, senha, tipo, cnpj, descricao);
 
                 listaAgencia.add(agencia);

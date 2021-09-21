@@ -12,10 +12,6 @@
     justify-content: space-between;
 }
 
-.navbar-container img {
-    height: 106px;
-}
-
 .navbar-container .right-side {
     font-size: 36px;
 

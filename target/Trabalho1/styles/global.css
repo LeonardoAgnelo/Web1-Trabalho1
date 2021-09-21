@@ -56,6 +56,10 @@ a {
     cursor: pointer;
 }
 
+.logo {
+    height: 106px;
+}
+
 .campo {
     font-size: 24px;
 

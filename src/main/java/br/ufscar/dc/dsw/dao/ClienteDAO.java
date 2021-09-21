@@ -76,7 +76,7 @@ public class ClienteDAO extends GenericDAO {
                 String cpf = resultSet.getString("cpf");
                 String telefone = resultSet.getString("telefone");
                 String sexo = resultSet.getString("sexo");
-                Timestamp dataNascimento = resultSet.getTimestamp("dataNascimento");
+                Timestamp dataNascimento = resultSet.getTimestamp("data_nascimento");
                 Cliente cliente = new Cliente(id, nome, email, senha, tipo, cpf, telefone, sexo, dataNascimento);
 
                 listaCliente.add(cliente);
