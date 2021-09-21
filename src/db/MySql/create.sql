@@ -66,3 +66,5 @@ ALTER TABLE `foto` ADD CONSTRAINT `foto_fk0` FOREIGN KEY (`id_pacote`) REFERENCE
 ALTER TABLE `compra` ADD CONSTRAINT `compra_fk0` FOREIGN KEY (`id_cliente`) REFERENCES `cliente`(`id_usuario`);
 
 ALTER TABLE `compra` ADD CONSTRAINT `compra_fk1` FOREIGN KEY (`id_pacote`) REFERENCES `pacote_turistico`(`id`);
+
+INSERt INTO usuario(nome, email, senha, tipo) values ('admiministrador', 'admin', 'admin@admin.com', 'admin', 'admin');
