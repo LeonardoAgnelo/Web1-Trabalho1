@@ -48,7 +48,7 @@ public class AgenciaDAO extends GenericDAO {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setInt(1, agencia.getId());
+            statement.setLong(1, agencia.getId());
             statement.executeUpdate();
 
             statement.close();
@@ -69,7 +69,7 @@ public class AgenciaDAO extends GenericDAO {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
-                Integer id = resultSet.getInt("id");
+                Long id = resultSet.getLong("id");
                 String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");

@@ -8,7 +8,7 @@ public class Cliente extends Usuario {
     private String sexo;
     private Timestamp dataNascimento;
 
-    public Cliente(Integer id, String nome, String email, String senha, String tipo, String cpf, String telefone, String sexo, Timestamp dataNascimento) {
+    public Cliente(Long id, String nome, String email, String senha, String tipo, String cpf, String telefone, String sexo, Timestamp dataNascimento) {
         super(id, nome, email, senha, tipo);
 
         this.setCpf(cpf);

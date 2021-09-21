@@ -5,13 +5,13 @@ package br.ufscar.dc.dsw.domain;
  */
 public class Usuario {
 
-    private Integer id;
+    private Long id;
     private String nome;
     private String email;
     private String senha;
     private String tipo;
 
-    public Usuario(Integer id, String nome, String email, String senha, String tipo) {
+    public Usuario(Long id, String nome, String email, String senha, String tipo) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -27,11 +27,11 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

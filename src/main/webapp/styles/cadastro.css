@@ -8,10 +8,11 @@ body {
 .cadastro-container {
     position: relative;
 
+    padding-top: 111px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .botao-voltar {
@@ -75,7 +76,7 @@ body {
     justify-content: space-between;
 }
 
-.opcao button {
+.opcao a {
     width: 305px;
     height: 127px;
 
@@ -99,6 +100,6 @@ body {
     transition: all 0.2s;
 }
 
-.opcao button:hover {
+.opcao a:hover {
     opacity: 0.8;
 }

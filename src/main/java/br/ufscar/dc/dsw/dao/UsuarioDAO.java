@@ -10,18 +10,17 @@ import br.ufscar.dc.dsw.domain.Usuario;
 public class UsuarioDAO extends GenericDAO{
 
     public void insert(Usuario usuario){
-        String sql = "INSERT INTO Usuario (id, nome, email, senha tipo) VALUES (?, ?, ?, ?, ?) ";
+        String sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES (?, ?, ?, ?) ";
 
         try{
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement = conn.prepareStatement(sql);
-            statement.setInt(1, usuario.getId());
-            statement.setString(2, usuario.getNome());
-            statement.setString(3, usuario.getEmail());
-            statement.setString(4, usuario.getSenha());
-            statement.setString(5, usuario.getTipo());
+            statement.setString(1, usuario.getNome());
+            statement.setString(2, usuario.getEmail());
+            statement.setString(3, usuario.getSenha());
+            statement.setString(4, usuario.getTipo());
             statement.executeUpdate();
 
             statement.close();
@@ -31,13 +30,13 @@ public class UsuarioDAO extends GenericDAO{
         }
     }
     public void delete(Usuario usuario){
-        String sql = "DELETE FROM Usuario where id = ?";
+        String sql = "DELETE FROM usuario where id = ?";
 
         try{
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setInt(1, usuario.getId());
+            statement.setLong(1, usuario.getId());
             statement.executeUpdate();
 
             statement.close();
@@ -50,7 +49,7 @@ public class UsuarioDAO extends GenericDAO{
     public Integer getIdByEmail(String email){
         Integer id = -1;
 
-        String sql = "SELECT id FROM usuario 1 WHERE 1.email = ?";
+        String sql = "SELECT id FROM usuario u WHERE u.email = ?";
 
         try{
             Connection conn = this.getConnection();
@@ -82,7 +81,7 @@ public class UsuarioDAO extends GenericDAO{
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                Integer id = resultSet.getInt("id");
+                Long id = resultSet.getLong("id");
                 String nome = resultSet.getString("nome");
                 String senha = resultSet.getString("senha");
                 String tipo = resultSet.getString("tipo");

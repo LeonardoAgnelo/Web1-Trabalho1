@@ -15,7 +15,7 @@ import br.ufscar.dc.dsw.domain.Cliente;
 public class ClienteDAO extends GenericDAO {
 
     public void insert(Cliente cliente){
-        String sql = "INSERTO INTO cliente (cpf, telefone, sexo, data_nascimento, id_usuario) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO cliente (cpf, telefone, sexo, data_nascimento, id_usuario) VALUES (?, ?, ?, ?, ?)";
         //inserir na tabela usuario do banco de dados
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.insert(cliente);
@@ -48,7 +48,7 @@ public class ClienteDAO extends GenericDAO {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setInt(1, cliente.getId());
+            statement.setLong(1, cliente.getId());
             statement.executeUpdate();
 
             statement.close();
@@ -68,7 +68,7 @@ public class ClienteDAO extends GenericDAO {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()) {
-                Integer id = resultSet.getInt("id");
+                Long id = resultSet.getLong("id");
                 String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");

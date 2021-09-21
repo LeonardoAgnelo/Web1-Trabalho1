@@ -17,7 +17,7 @@
                 <a href="login.jsp" class="botao-login">
                     Login
                 </a>
-                <a href="/cadastro" class="botao-cadastro">
+                <a href="cadastro.jsp" class="botao-cadastro">
                     Cadastre-se
                 </a>
             </div>
