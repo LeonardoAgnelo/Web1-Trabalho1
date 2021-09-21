@@ -1,12 +1,14 @@
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Foto.java
-/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/ClienteDAO.java
-/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Destino.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/util/Erro.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/PacoteTuristicoDAO.java
-/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/PacoteTuristico.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Cliente.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/FotoDAO.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Destino.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/controller/CadastroClienteController.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/AgenciaDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/GenericDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Agencia.java

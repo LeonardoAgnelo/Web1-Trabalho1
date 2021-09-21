@@ -4,7 +4,7 @@ public class Agencia extends Usuario {
     private String cnpj;
     private String descricao;
 
-    public Agencia(Integer id, String nome, String email, String senha, String tipo, String cnpj, String descricao) {
+    public Agencia(Long id, String nome, String email, String senha, String tipo, String cnpj, String descricao) {
         super(id, nome, email, senha, tipo);
 
         this.setCnpj(cnpj);

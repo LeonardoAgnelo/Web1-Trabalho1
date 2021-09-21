@@ -62,7 +62,7 @@ public class PacoteTuristicoDAO extends GenericDAO {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                Integer idUsuario = resultSet.getInt("id_usuario");
+                Long idUsuario = resultSet.getLong("id_usuario");
                 String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");

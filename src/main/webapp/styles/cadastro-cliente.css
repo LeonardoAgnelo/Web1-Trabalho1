@@ -85,7 +85,7 @@
     height: 70px;
 }
 
-.form-cadastro-cliente button {
+.form-cadastro-cliente .submit {
     width: 214px;
     height: 64px;
 
@@ -106,6 +106,6 @@
     transition: all 0.2s;
 }
 
-.form-cadastro-cliente button:hover {
+.form-cadastro-cliente .submit:hover {
     opacity: 0.8;
 }
