@@ -8,10 +8,11 @@ body {
 .login-container {
     position: relative;
 
+    padding-top: 111px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .botao-voltar {
