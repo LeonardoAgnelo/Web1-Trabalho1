@@ -67,4 +67,4 @@ ALTER TABLE `compra` ADD CONSTRAINT `compra_fk0` FOREIGN KEY (`id_cliente`) REFE
 
 ALTER TABLE `compra` ADD CONSTRAINT `compra_fk1` FOREIGN KEY (`id_pacote`) REFERENCES `pacote_turistico`(`id`);
 
-INSERt INTO usuario(nome, email, senha, tipo) values ('admiministrador', 'admin', 'admin@admin.com', 'admin', 'admin');
+INSERt INTO usuario(nome, email, senha, tipo) values ('administrador', 'admin@admin.com', 'admin', 'admin');
