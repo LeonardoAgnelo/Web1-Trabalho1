@@ -29,7 +29,7 @@
                 </div>
                 <div class="campo-container">
                     <label for="senha">Senha</label>
-                    <input class="campo" id="senha" type="text"/>
+                    <input class="campo" id="senha" type="password"/>
                 </div>
                 <div class="campo-container">
                     <label for="descricao">Descrição</label>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="campo-container">
                     <label for="confirmar-senha">Confirmar senha</label>
-                    <input class="campo" id="confirmar-senha" type="text"/>
+                    <input class="campo" id="confirmar-senha" type="password"/>
                 </div>
             </div>
             <button type="submit">Cadastrar</button>
