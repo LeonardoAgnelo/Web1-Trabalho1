@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Excellent Voyage</title>
+    <title>Cadastro | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/cadastro.css" />
 </head>
@@ -17,11 +17,11 @@
         <div class="opcoes-usuario">
             <div class="opcao">
                 <img src="assets/icons/airplane.svg"/>
-                <button>Sou uma agência</button>
+                <a href="cadastroAgencia.jsp">Sou uma agência</a>
             </div>
             <div class="opcao">
                 <img src="assets/icons/person.svg"/>
-                <button>Sou um cliente</button>
+                <a href="cadastroCliente.jsp">Sou um cliente</a>
             </div>
         </div>
     </div>
