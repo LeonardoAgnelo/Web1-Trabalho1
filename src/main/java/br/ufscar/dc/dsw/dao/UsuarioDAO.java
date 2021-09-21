@@ -73,7 +73,7 @@ public class UsuarioDAO extends GenericDAO{
     public Usuario getByEmail(String email){
         Usuario usuario = null;
 
-        String sql = "SELECT * FROM usuario 1 WHERE 1.email = ?";
+        String sql = "SELECT * FROM usuario WHERE email = ?";
 
         try{
             Connection conn = this.getConnection();
