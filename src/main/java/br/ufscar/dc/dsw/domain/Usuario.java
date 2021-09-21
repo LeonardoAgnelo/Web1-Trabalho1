@@ -3,7 +3,7 @@ package br.ufscar.dc.dsw.domain;
 /**
  * Usuario
  */
-abstract public class Usuario {
+public class Usuario {
 
     private Integer id;
     private String nome;
