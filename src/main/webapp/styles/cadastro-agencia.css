@@ -85,7 +85,15 @@
     height: 70px;
 }
 
+.form-cadastro-cliente .campos .campo-container textarea {
+    height: 216px !important;
+
+    resize: none;
+}
+
 .form-cadastro-cliente button {
+    margin-top: calc(-64px - 30px);
+
     width: 214px;
     height: 64px;
 

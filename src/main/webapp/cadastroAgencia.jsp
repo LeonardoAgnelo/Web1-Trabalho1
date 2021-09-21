@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
-    <link rel="stylesheet" href="styles/cadastro-cliente.css" />
+    <link rel="stylesheet" href="styles/cadastro-agencia.css" />
 </head>
 <body>
     <div class="cadastro-cliente-container box">
@@ -24,24 +24,16 @@
                     <input class="campo" id="email" type="text"/>
                 </div>
                 <div class="campo-container">
-                    <label for="cpf">CPF</label>
-                    <input class="campo" id="cpf" type="text"/>
-                </div>
-                <div class="campo-container">
-                    <label for="telefone">Telefone</label>
-                    <input class="campo" id="telefone" type="text"/>
-                </div>
-                <div class="campo-container">
-                    <label for="sexo">Sexo</label>
-                    <input class="campo" id="sexo" type="text"/>
-                </div>
-                <div class="campo-container">
-                    <label for="data-nascimento">Data de nascimento</label>
-                    <input class="campo" id="data-nascimento" type="text"/>
+                    <label for="cnpj">CNPJ</label>
+                    <input class="campo" id="cnpj" type="text"/>
                 </div>
                 <div class="campo-container">
                     <label for="senha">Senha</label>
                     <input class="campo" id="senha" type="text"/>
+                </div>
+                <div class="campo-container">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="campo" id="descricao" type="text"></textarea>
                 </div>
                 <div class="campo-container">
                     <label for="confirmar-senha">Confirmar senha</label>
