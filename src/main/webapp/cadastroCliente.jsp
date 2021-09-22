@@ -34,30 +34,43 @@
             <div class="campos">
                 <div class="campo-container">
                     <label for="nome">Nome</label>
-                    <input class="campo" id="nome" name="nome" type="text"/>
+                    <input class="campo" id="nome" name="nome" type="text" value="${nome}"/>
                 </div>
                 <div class="campo-container">
                     <label for="email">Email</label>
-                    <input class="campo" id="email" name="email" type="text"/>
+                    <input class="campo" id="email" name="email" type="text" value="${email}"/>
                 </div>
                 <div class="campo-container">
                     <label for="cpf">CPF</label>
-                    <input class="campo" id="cpf" name="cpf" type="text"/>
+                    <input class="campo" id="cpf" name="cpf" type="text" value="${cpf}"/>
                 </div>
                 <div class="campo-container">
                     <label for="telefone">Telefone</label>
-                    <input class="campo" id="telefone" name="telefone" name="telefone" type="text"/>
+                    <input class="campo" id="telefone" name="telefone" name="telefone" type="text" value="${telefone}"/>
                 </div>
                 <div class="campo-container">
                     <label for="sexo">Sexo</label>
                     <select class="campo" id="sexo" name="sexo" name="sexo" type="text">
-                        <option value="masculino">Masculino</option>
-                        <option value="feminio">Feminio</option>
+                        <option value="" selected hidden>Selecione um sexo...</option>
+                        <c:choose>
+                            <c:when test="${sexo == 'masculino'}">
+                                <option value="masculino" selected>Masculino</option>
+                                <option value="feminino">Feminino</option>
+                            </c:when>
+                            <c:when test="${sexo == 'feminino'}">
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino" selected>Feminino</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                            </c:otherwise>
+                        </c:choose>
                     </select>
                 </div>
                 <div class="campo-container">
                     <label for="data-nascimento">Data de nascimento</label>
-                    <input class="campo" id="data-nascimento" name="data-nascimento" type="date"/>
+                    <input class="campo" id="data-nascimento" name="data-nascimento" type="date" value="${dataNascimento}"/>
                 </div>
                 <div class="campo-container">
                     <label for="senha">Senha</label>

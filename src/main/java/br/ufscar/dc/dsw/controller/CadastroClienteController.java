@@ -64,7 +64,15 @@ public class CadastroClienteController extends HttpServlet{
                 dao.insert(cliente);
                 response.sendRedirect("index.jsp");
             } else {
+                erros.add(sexo);
                 request.setAttribute("mensagens", erros);
+
+                request.setAttribute("nome", nome);
+                request.setAttribute("email", email);
+                request.setAttribute("cpf", cpf);
+                request.setAttribute("telefone", telefone);
+                request.setAttribute("sexo", sexo);
+                request.setAttribute("dataNascimento", dataNascimentoParam);
 
                 RequestDispatcher rd = request.getRequestDispatcher("cadastroCliente.jsp");
                 rd.forward(request, response);
@@ -74,8 +82,5 @@ public class CadastroClienteController extends HttpServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-
-        // request.setAttribute("mensagens", erros);
     }
 }
