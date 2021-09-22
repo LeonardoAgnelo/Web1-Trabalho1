@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/cadastro.css" />
     <script type="text/javascript">
         var usuario = "<%= session.getAttribute("usuarioLogado")%>";
-        if (usuario !== null) {
+        if (usuario !== "null") {
             window.location.href="index.jsp";
         }
     </script>
