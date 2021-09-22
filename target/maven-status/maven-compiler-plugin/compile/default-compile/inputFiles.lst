@@ -8,6 +8,7 @@
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/FotoDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/controller/AdminController.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/controller/LoginController.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/controller/CadastroAgenciaController.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Destino.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java

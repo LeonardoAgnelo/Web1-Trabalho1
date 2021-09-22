@@ -1,34 +1,31 @@
 .cadastro-cliente-container {
     position: relative;
 
+    padding: 115px 0 80px;
+
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.botao-voltar {
-    position: absolute;
+.form-erro {
+    margin-bottom: 20px;
 
-    top: 20px;
-    left: 0;
+    padding: 30px 70px;
 
-    font-size: 26px;
+    width: 100%;
+    max-width: 1187px;
+
     font-weight: 500;
 
-    color: var(--primary);
+    color: #9e001e;
 
-    display: flex;
-    align-items: center;
+    background: #ffcccc;
 
-    transition: all 0.2s;
-}
+    border: 1px solid #9e001e;
+    border-radius: 50px;
 
-.botao-voltar:hover {
-    opacity: 0.8;
-}
-
-.botao-voltar img {
-    margin-right: 5px;
+    box-shadow: var(--shadow);
 }
 
 .form-cadastro-cliente {
@@ -91,7 +88,7 @@
     resize: none;
 }
 
-.form-cadastro-cliente button {
+.form-cadastro-cliente .submit {
     margin-top: calc(-64px - 30px);
 
     width: 214px;
@@ -114,6 +111,6 @@
     transition: all 0.2s;
 }
 
-.form-cadastro-cliente button:hover {
+.form-cadastro-cliente .submit:hover {
     opacity: 0.8;
 }

@@ -35,7 +35,7 @@ public class Validator {
     }
 
     public Validator compare(String value) {
-        if (value != valor) {
+        if (!value.equals(valor)) {
             erros.add(nomeCampo + " diferente!");
         }
 

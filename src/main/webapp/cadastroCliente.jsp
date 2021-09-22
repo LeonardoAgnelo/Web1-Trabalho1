@@ -29,7 +29,7 @@
                 </ul>
             </div>
         </c:if>
-        <form method="POST" class="form-cadastro-cliente" action="cadastroCliente">
+        <form class="form-cadastro-cliente" action="cadastroCliente" method="POST" >
             <h1>Formulário de cadastro</h1>
             <div class="campos">
                 <div class="campo-container">
