@@ -10,6 +10,12 @@
     <title>Cadastro | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/cadastro-cliente.css" />
+    <script type="text/javascript">
+        var usuario = "<%= session.getAttribute("usuarioLogado")%>";
+        if (usuario !== null) {
+            window.location.href="index.jsp";
+        }
+    </script>
 </head>
 <body>
     <div class="cadastro-cliente-container box">
@@ -23,7 +29,7 @@
                 </ul>
             </div>
         </c:if>
-        <form method="post" class="form-cadastro-cliente" action="cadastrar.jsp">
+        <form method="POST" class="form-cadastro-cliente" action="cadastroCliente">
             <h1>Formulário de cadastro</h1>
             <div class="campos">
                 <div class="campo-container">

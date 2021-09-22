@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.ufscar.dc.dsw</groupId>
-  <artifactId>app</artifactId>
+  <artifactId>ExcellentVoyage</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>app Maven Webapp</name>
+  <name>Excellent Voyage</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -55,7 +55,7 @@
   </dependencies>
 
   <build>
-    <finalName>Trabalho1</finalName>
+    <finalName>ExcellentVoyage</finalName>
 
 
     <plugins>
@@ -75,6 +75,7 @@
         <version>1.0-beta-1</version>
         <executions>
           <execution>
+            <!-- <?m2e execute onConfiguration?> -->
             <id>native2ascii-utf8-resources</id>
             <goals>
               <goal>native2ascii</goal>

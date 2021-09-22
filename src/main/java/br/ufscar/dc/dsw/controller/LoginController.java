@@ -14,18 +14,13 @@ import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.util.Erro;
 
 
-@WebServlet(name = "login", urlPatterns = { "/login2.jsp", "/logout.jsp" })
+@WebServlet(name = "login", urlPatterns = { "/loginController" })
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Erro erros = new Erro();
 		if (request.getParameter("bOK") != null) {
@@ -43,13 +38,7 @@ public class LoginController extends HttpServlet {
 				if (usuario != null) {
 					if (usuario.getSenha().equals(senha)) {
 						request.getSession().setAttribute("usuarioLogado", usuario);
-						if (usuario.getTipo().equals("admin")) {
-							response.sendRedirect("admin/");
-						} else if(usuario.getTipo().equals("cliente")){
-							response.sendRedirect("cliente/");
-						}else {
-                            response.sendRedirect("agencia/");
-                        }
+						response.sendRedirect("index.jsp");
 						return;
 					} else {
 						erros.add("Senha inválida!");
@@ -59,13 +48,16 @@ public class LoginController extends HttpServlet {
 				}
 			}
 		}
-        request.getSession().invalidate();
+		request.getSession().invalidate();
 
 		request.setAttribute("mensagens", erros);
 
-		String URL = "/login.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(URL);
+		RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 		rd.forward(request, response);
+	}
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
     
 }

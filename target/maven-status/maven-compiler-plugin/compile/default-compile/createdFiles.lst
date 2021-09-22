@@ -1,0 +1,16 @@
+br/ufscar/dc/dsw/domain/PacoteTuristico.class
+br/ufscar/dc/dsw/controller/AdminController.class
+br/ufscar/dc/dsw/domain/Foto.class
+br/ufscar/dc/dsw/dao/PacoteTuristicoDAO.class
+br/ufscar/dc/dsw/controller/CadastroClienteController.class
+br/ufscar/dc/dsw/domain/Usuario.class
+br/ufscar/dc/dsw/domain/Destino.class
+br/ufscar/dc/dsw/dao/AgenciaDAO.class
+br/ufscar/dc/dsw/dao/GenericDAO.class
+br/ufscar/dc/dsw/domain/Agencia.class
+br/ufscar/dc/dsw/controller/LoginController.class
+br/ufscar/dc/dsw/dao/ClienteDAO.class
+br/ufscar/dc/dsw/domain/Cliente.class
+br/ufscar/dc/dsw/dao/UsuarioDAO.class
+br/ufscar/dc/dsw/util/Erro.class
+br/ufscar/dc/dsw/dao/FotoDAO.class

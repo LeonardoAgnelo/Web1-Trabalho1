@@ -46,14 +46,12 @@ body {
     width: 100%;
 }
 
-button {
-    cursor: pointer;
+button, a, input[type="submit"] {
+    cursor: pointer !important;
 }
 
 a {
     text-decoration: none !important;
-
-    cursor: pointer;
 }
 
 .logo {

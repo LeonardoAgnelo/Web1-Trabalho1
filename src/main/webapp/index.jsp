@@ -11,17 +11,7 @@
 </head>
 <body>
     <div class="home-container box">
-        <nav class="navbar-container">
-            <img class="logo" src="assets/logo.svg" />
-            <div class="right-side">
-                <a href="login.jsp" class="botao-login">
-                    Login
-                </a>
-                <a href="cadastro.jsp" class="botao-cadastro">
-                    Cadastre-se
-                </a>
-            </div>
-        </nav>
+        <jsp:include page="components/navbar.jsp" />
         <main>
             <div class="hero-container">
                 <p>

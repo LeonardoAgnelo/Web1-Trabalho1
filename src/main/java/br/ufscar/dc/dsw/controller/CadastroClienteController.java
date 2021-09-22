@@ -17,7 +17,7 @@ import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.util.Erro;
 
-@WebServlet(name = "Index", urlPatterns = { "/cadastrar.jsp" })
+@WebServlet(urlPatterns = { "/cadastroClienteController" })
 public class CadastroClienteController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 	
@@ -73,6 +73,11 @@ public class CadastroClienteController extends HttpServlet{
         
                 dao.insert(cliente);
                 response.sendRedirect("index.jsp");
+            } else {
+                request.setAttribute("mensagens", erros);
+
+                RequestDispatcher rd = request.getRequestDispatcher("cadastroCliente.jsp");
+                rd.forward(request, response);
             }
         }
 	}
@@ -82,8 +87,5 @@ public class CadastroClienteController extends HttpServlet{
         
 
         // request.setAttribute("mensagens", erros);
-
-        RequestDispatcher rd = request.getRequestDispatcher("/cadastroCliente.jsp");
-		rd.forward(request, response);
     }
 }
