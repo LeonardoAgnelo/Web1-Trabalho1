@@ -39,7 +39,7 @@
                             </div>
                             <div class="pacote-compra">
                                 <span>R$ 969</span>
-                                <a href="/compra/1">Comprar</a>
+                                <a href="pacote.jsp">Comprar</a>
                             </div>
                         </div>
                     </div>
