@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.util.Erro;
+import br.ufscar.dc.dsw.util.Validator;
 
 @WebServlet(urlPatterns = { "/cadastroClienteController" })
 public class CadastroClienteController extends HttpServlet{
@@ -27,29 +28,23 @@ public class CadastroClienteController extends HttpServlet{
         Erro erros = new Erro();
         if (request.getParameter("bOK") != null) {
             String nome = request.getParameter("nome");
-            if (nome == null || nome.isEmpty()) {
-                erros.add("Nome não informado!");
-            }
             String email = request.getParameter("email");
-            if (email == null || email.isEmpty()) {
-                erros.add("email não informado!");
-            }
             String cpf = request.getParameter("cpf");
-            if (cpf == null || cpf.isEmpty()) {
-                erros.add("cpf não informado!");
-            }
             String telefone = request.getParameter("telefone");
-            if (telefone == null || telefone.isEmpty()) {
-                erros.add("telefone não informado!");
-            }
             String sexo = request.getParameter("sexo");
-            if (sexo == null || sexo.isEmpty()) {
-                erros.add("sexo não informado!");
-            }
             String dataNascimentoParam = request.getParameter("data-nascimento");
-            if (dataNascimentoParam == null || dataNascimentoParam.isEmpty()) {
-                erros.add("data nascimento não informado!");
-            }
+            String senha = request.getParameter("senha");
+            String confirmarSenha = request.getParameter("confirmar-senha");
+
+            erros = new Validator("Nome", nome).required().addErro(erros);
+            erros = new Validator("Email", email).required().email().addErro(erros);
+            erros = new Validator("CPF", cpf).required().addErro(erros);
+            erros = new Validator("Telefone", telefone).required().addErro(erros);
+            erros = new Validator("Sexo", sexo).required().addErro(erros);
+            erros = new Validator("Data de nascimento", dataNascimentoParam).required().addErro(erros);
+            erros = new Validator("Senha", senha).required().addErro(erros);
+            erros = new Validator("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
+
             Timestamp dataNascimento = null;
             
             if (dataNascimentoParam != null && !dataNascimentoParam.isEmpty()) {
@@ -60,11 +55,6 @@ public class CadastroClienteController extends HttpServlet{
                 } catch (java.text.ParseException e) {
                     erros.add(e.toString());
                 }
-            }
-
-            String senha = request.getParameter("senha");
-            if (senha == null || senha.isEmpty()) {
-                erros.add("senha não informado!");
             }
 
             if (!erros.isExisteErros()) {

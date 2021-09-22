@@ -50,7 +50,10 @@
                 </div>
                 <div class="campo-container">
                     <label for="sexo">Sexo</label>
-                    <input class="campo" id="sexo" name="sexo" name="sexo" type="text"/>
+                    <select class="campo" id="sexo" name="sexo" name="sexo" type="text">
+                        <option value="masculino">Masculino</option>
+                        <option value="feminio">Feminio</option>
+                    </select>
                 </div>
                 <div class="campo-container">
                     <label for="data-nascimento">Data de nascimento</label>

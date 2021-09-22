@@ -4,6 +4,7 @@ br/ufscar/dc/dsw/domain/Foto.class
 br/ufscar/dc/dsw/dao/PacoteTuristicoDAO.class
 br/ufscar/dc/dsw/controller/CadastroClienteController.class
 br/ufscar/dc/dsw/domain/Usuario.class
+br/ufscar/dc/dsw/util/Validator.class
 br/ufscar/dc/dsw/domain/Destino.class
 br/ufscar/dc/dsw/dao/AgenciaDAO.class
 br/ufscar/dc/dsw/dao/GenericDAO.class

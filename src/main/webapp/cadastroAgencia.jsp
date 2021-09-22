@@ -27,7 +27,7 @@
                 </div>
                 <div class="campo-container">
                     <label for="email">Email</label>
-                    <input class="campo" id="email" type="text"/>
+                    <input class="campo" id="email" type="email"/>
                 </div>
                 <div class="campo-container">
                     <label for="cnpj">CNPJ</label>
