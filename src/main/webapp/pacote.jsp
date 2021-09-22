@@ -12,17 +12,7 @@
 </head>
 <body>
     <div class="home-container box">
-        <nav class="navbar-container">
-            <img class="logo" src="assets/logo.svg" />
-            <div class="right-side">
-                <a href="login.jsp" class="botao-login">
-                    Login
-                </a>
-                <a href="cadastro.jsp" class="botao-cadastro">
-                    Cadastre-se
-                </a>
-            </div>
-        </nav>
+        <jsp:include page="components/navbar.jsp" />
         <main>
             <div class="pacote-container">
                 <div class="lista-fotos">
@@ -39,8 +29,6 @@
                             <p>Valor</p>
                             <h2 id="pacote-preco">R$ 700,00</h2>
                             <h2 id="info-adicionais">Informações adicionais</h2>
-                            <p>Cidade</p>
-                            <h3>São Carlos</h3>
                             <p>Estado</p>
                             <h3>São Paulo</h3>
                             <p>País</p>
