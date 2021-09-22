@@ -1,9 +1,31 @@
 .cadastro-cliente-container {
     position: relative;
 
+    padding: 115px 0 80px;
+
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.form-erro {
+    margin-bottom: 20px;
+
+    padding: 30px 70px;
+
+    width: 100%;
+    max-width: 1187px;
+
+    font-weight: 500;
+
+    color: #9e001e;
+
+    background: #ffcccc;
+
+    border: 1px solid #9e001e;
+    border-radius: 50px;
+
+    box-shadow: var(--shadow);
 }
 
 .botao-voltar {

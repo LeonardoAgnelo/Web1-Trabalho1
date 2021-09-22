@@ -21,7 +21,7 @@
     <div class="cadastro-cliente-container box">
         <a class="botao-voltar" href="javascript:history.go(-1)"><img src="assets/icons/arrow-left.svg" />Voltar</a>
         <c:if test="${mensagens.existeErros}">
-            <div id="erro">
+            <div class="form-erro">
                 <ul>
                     <c:forEach var="erro" items="${mensagens.erros}">
                         <li> ${erro} </li>

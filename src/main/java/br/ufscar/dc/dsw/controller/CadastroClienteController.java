@@ -64,7 +64,6 @@ public class CadastroClienteController extends HttpServlet{
                 dao.insert(cliente);
                 response.sendRedirect("index.jsp");
             } else {
-                erros.add(sexo);
                 request.setAttribute("mensagens", erros);
 
                 request.setAttribute("nome", nome);
