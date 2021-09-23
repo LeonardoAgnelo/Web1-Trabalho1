@@ -40,6 +40,28 @@ public class ClienteDAO extends GenericDAO {
         }
 
     }
+    public void update(Cliente cliente) {
+        String sql = "UPDATE cliente SET cpf = ?, telefone = ?, sexo = ?, data_nascimento = ? WHERE id_usuario = ?";
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarioDAO.update(cliente);
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, cliente.getCpf());
+            statement.setString(2, cliente.getTelefone());
+            statement.setString(3, cliente.getSexo());
+            statement.setTimestamp(4, cliente.getDataNascimento());
+            statement.setLong(5, cliente.getId());
+            statement.executeUpdate();
+
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void delete(Cliente cliente){
         String sql = "DELETE FROM cliente WHERE id = ?";
