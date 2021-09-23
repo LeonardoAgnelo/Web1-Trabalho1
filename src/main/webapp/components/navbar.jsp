@@ -2,30 +2,33 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="br.ufscar.dc.dsw.domain.Usuario" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <nav class="navbar-container">
-    <img class="logo" src="assets/logo.svg" />
+<fmt:bundle basename="message">
+    <a href="index.jsp"><img class="logo" src="assets/logo.svg" /></a>
 
     <c:choose>
         <c:when test="${sessionScope.usuarioLogado != null}">
             <div class="right-side">
-                <a href="perfil" class="botao-logado">
+                <a href="perfil.jsp" class="botao-logado">
                     <img src="assets/icons/person-circle.svg"/> ${sessionScope.usuarioLogado.nome}
                 </a>
                 <a href="${pageContext.request.contextPath}/logout" class="botao-logado">
-                    <img src="assets/icons/exit.svg"/> Sair
+                    <img src="assets/icons/exit.svg"/> <fmt:message key="nav.sair"/>
                 </a>
             </div>
         </c:when>
         <c:otherwise>
             <div class="right-side">
                 <a href="login.jsp" class="botao-login">
-                    Login
+                    <fmt:message key="nav.login"/>
                 </a>
                 <a href="cadastro.jsp" class="botao-cadastro">
-                    Cadastre-se
+                    <fmt:message key="nav.cadastro"/>
                 </a>
             </div>
         </c:otherwise>
     </c:choose>
+</fmt:bundle>
 </nav>
