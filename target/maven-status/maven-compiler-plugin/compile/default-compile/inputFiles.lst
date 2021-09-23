@@ -4,6 +4,7 @@
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/PacoteTuristicoDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/PacoteTuristico.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/domain/Cliente.java
+/home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/controller/LogoutController.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/util/Validator.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/dao/FotoDAO.java
 /home/samuel/Documentos/Ufscar/ENPE/Web 1/Trabalhos/Trabalho1/src/main/java/br/ufscar/dc/dsw/controller/AdminController.java

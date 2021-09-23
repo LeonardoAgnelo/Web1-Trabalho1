@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.util.Erro;
+import br.ufscar.dc.dsw.util.Validator;
 
 
 @WebServlet(name = "login", urlPatterns = { "/loginController" })
@@ -26,12 +27,9 @@ public class LoginController extends HttpServlet {
 		if (request.getParameter("bOK") != null) {
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
-			if (email == null || email.isEmpty()) {
-				erros.add("Email não informado!");
-			}
-			if (senha == null || senha.isEmpty()) {
-				erros.add("Senha não informada!");
-			}
+			erros = new Validator("Email", email).required().addErro(erros);
+			erros = new Validator("Senha", senha).required().addErro(erros);
+
 			if (!erros.isExisteErros()) {
 				UsuarioDAO dao = new UsuarioDAO();
 				Usuario usuario = dao.getByEmail(email);
@@ -42,6 +40,7 @@ public class LoginController extends HttpServlet {
 						return;
 					} else {
 						erros.add("Senha inválida!");
+						request.setAttribute("email", email);
 					}
 				} else {
 					erros.add("Usuário não encontrado!");
@@ -59,5 +58,4 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	}
-    
 }

@@ -49,7 +49,7 @@ public class CadastroClienteController extends HttpServlet{
             
             if (dataNascimentoParam != null && !dataNascimentoParam.isEmpty()) {
                 try {
-                    DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     Date date = formatter.parse(dataNascimentoParam);
                     dataNascimento = new Timestamp(date.getTime());
                 } catch (java.text.ParseException e) {
@@ -62,8 +62,12 @@ public class CadastroClienteController extends HttpServlet{
                 Cliente cliente = new Cliente(nome, email, senha, "cliente", cpf, telefone, sexo, dataNascimento);
         
                 dao.insert(cliente);
+
+                request.getSession().setAttribute("usuarioLogado", cliente);
                 response.sendRedirect("index.jsp");
             } else {
+                request.getSession().invalidate();
+
                 request.setAttribute("mensagens", erros);
 
                 request.setAttribute("nome", nome);

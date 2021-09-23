@@ -12,7 +12,7 @@
                 <a href="perfil.jsp" class="botao-logado">
                     <img src="assets/icons/person-circle.svg"/> ${sessionScope.usuarioLogado.nome}
                 </a>
-                <a href="sair.jsp" class="botao-logado">
+                <a href="${pageContext.request.contextPath}/logout" class="botao-logado">
                     <img src="assets/icons/exit.svg"/> Sair
                 </a>
             </div>

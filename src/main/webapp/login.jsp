@@ -23,7 +23,7 @@
         <a class="botao-voltar" href="javascript:history.go(-1)"><img src="assets/icons/arrow-left.svg" />Voltar</a>
         <img class="logo" src="assets/logo.svg" />
         <c:if test="${mensagens.existeErros}">
-            <div id="erro">
+            <div class="form-erro">
                 <ul>
                     <c:forEach var="erro" items="${mensagens.erros}">
                         <li> ${erro} </li>
@@ -33,7 +33,7 @@
         </c:if>
         <form class="form-login" action="login" method="POST">
             <h1>Login</h1>
-            <input type="text" name="email" class="campo" placeholder="Digite seu e-mail" />
+            <input type="text" name="email" class="campo" placeholder="Digite seu e-mail" value="${email}"/>
             <input type="password" name="senha" class="campo" placeholder="Digite sua senha" />
             <input type="submit" name="bOK" value="Entrar"/>
             <a href="cadastro.jsp">cadastre-se</a>

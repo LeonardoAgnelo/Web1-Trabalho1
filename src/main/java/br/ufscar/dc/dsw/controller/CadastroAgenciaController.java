@@ -43,8 +43,12 @@ public class CadastroAgenciaController extends HttpServlet{
                 Agencia agencia = new Agencia(nome, email, senha, "agencia", cnpj, descricao);
 
                 dao.insert(agencia);
+
+                request.getSession().setAttribute("usuarioLogado", agencia);
                 response.sendRedirect("index.jsp");
             } else {
+                request.getSession().invalidate();
+
                 request.setAttribute("mensagens", erros);
 
                 request.setAttribute("nome", nome);

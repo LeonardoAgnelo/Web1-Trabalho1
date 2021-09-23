@@ -44,6 +44,10 @@ body {
     margin-bottom: 44px;
 }
 
+.form-erro {
+    max-width:  664px;
+}
+
 .form-login {
     padding: 40px 20px;
 
