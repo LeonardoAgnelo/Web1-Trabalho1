@@ -11,9 +11,9 @@
                 Confira os seus pacotes de viagens ofertados...
             </p>
         </div>
-        <button type="submit" class="botao-adicionarpacote">
+        <a href="adicionarPacote.jsp" class="botao-adicionarpacote">
             Adcionar pacote
-        </button>
+        </a>
     </div>
     
     <div class="pacotes-container">

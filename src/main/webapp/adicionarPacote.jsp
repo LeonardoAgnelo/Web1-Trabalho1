@@ -59,12 +59,12 @@
                 <div class="campo-container">
                     <label for="descricao">Descrição</label>
                     <input type="hidden" id="descricao" name="descricao" value="${descricao}" />
-                    <input type="file"/>
+                    <input style="font-size: 20px;" type="file"/>
                 </div>
                 <div class="campo-container">
                     <label for="foto">Fotos</label>
                     <input type="hidden" id="foto" name="foto" value="${foto}" />
-                    <input type="file"/>
+                    <input style="font-size: 20px;" type="file"/>
                 </div>
             </div>
             <input class="submit" type="submit" name="bOK" value="Adicionar" />
