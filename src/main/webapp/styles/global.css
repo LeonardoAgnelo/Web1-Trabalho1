@@ -46,14 +46,12 @@ body {
     width: 100%;
 }
 
-button {
-    cursor: pointer;
+button, a, input[type="submit"] {
+    cursor: pointer !important;
 }
 
 a {
     text-decoration: none !important;
-
-    cursor: pointer;
 }
 
 .logo {
@@ -68,4 +66,49 @@ a {
     border: 1px solid var(--gray-dark);
 
     border-radius: 10px;
+}
+
+.botao-voltar {
+    position: absolute;
+
+    top: 20px;
+    left: 0;
+
+    font-size: 26px;
+    font-weight: 500;
+
+    color: var(--primary);
+
+    display: flex;
+    align-items: center;
+
+    transition: all 0.2s;
+}
+
+.botao-voltar:hover {
+    opacity: 0.8;
+}
+
+.botao-voltar img {
+    margin-right: 5px;
+}
+
+.form-erro {
+    margin-bottom: 20px;
+
+    padding: 30px 70px;
+
+    width: 100%;
+    max-width: 1187px;
+
+    font-weight: 500;
+
+    color: #9e001e;
+
+    background: #ffcccc;
+
+    border: 1px solid #9e001e;
+    border-radius: 50px;
+
+    box-shadow: var(--shadow);
 }

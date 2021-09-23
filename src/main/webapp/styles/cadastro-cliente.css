@@ -1,34 +1,11 @@
 .cadastro-cliente-container {
     position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.botao-voltar {
-    position: absolute;
-
-    top: 20px;
-    left: 0;
-
-    font-size: 26px;
-    font-weight: 500;
-
-    color: var(--primary);
+    padding: 115px 0 80px;
 
     display: flex;
     align-items: center;
-
-    transition: all 0.2s;
-}
-
-.botao-voltar:hover {
-    opacity: 0.8;
-}
-
-.botao-voltar img {
-    margin-right: 5px;
+    flex-direction: column;
 }
 
 .form-cadastro-cliente {

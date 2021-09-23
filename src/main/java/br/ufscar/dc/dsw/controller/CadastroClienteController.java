@@ -16,8 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.util.Erro;
+import br.ufscar.dc.dsw.util.Validator;
 
-@WebServlet(name = "Index", urlPatterns = { "/cadastrar.jsp" })
+@WebServlet(urlPatterns = { "/cadastroClienteController" })
 public class CadastroClienteController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 	
@@ -27,34 +28,28 @@ public class CadastroClienteController extends HttpServlet{
         Erro erros = new Erro();
         if (request.getParameter("bOK") != null) {
             String nome = request.getParameter("nome");
-            if (nome == null || nome.isEmpty()) {
-                erros.add("Nome não informado!");
-            }
             String email = request.getParameter("email");
-            if (email == null || email.isEmpty()) {
-                erros.add("email não informado!");
-            }
             String cpf = request.getParameter("cpf");
-            if (cpf == null || cpf.isEmpty()) {
-                erros.add("cpf não informado!");
-            }
             String telefone = request.getParameter("telefone");
-            if (telefone == null || telefone.isEmpty()) {
-                erros.add("telefone não informado!");
-            }
             String sexo = request.getParameter("sexo");
-            if (sexo == null || sexo.isEmpty()) {
-                erros.add("sexo não informado!");
-            }
             String dataNascimentoParam = request.getParameter("data-nascimento");
-            if (dataNascimentoParam == null || dataNascimentoParam.isEmpty()) {
-                erros.add("data nascimento não informado!");
-            }
+            String senha = request.getParameter("senha");
+            String confirmarSenha = request.getParameter("confirmar-senha");
+
+            erros = new Validator("Nome", nome).required().addErro(erros);
+            erros = new Validator("Email", email).required().email().addErro(erros);
+            erros = new Validator("CPF", cpf).required().addErro(erros);
+            erros = new Validator("Telefone", telefone).required().addErro(erros);
+            erros = new Validator("Sexo", sexo).required().addErro(erros);
+            erros = new Validator("Data de nascimento", dataNascimentoParam).required().addErro(erros);
+            erros = new Validator("Senha", senha).required().addErro(erros);
+            erros = new Validator("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
+
             Timestamp dataNascimento = null;
             
             if (dataNascimentoParam != null && !dataNascimentoParam.isEmpty()) {
                 try {
-                    DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     Date date = formatter.parse(dataNascimentoParam);
                     dataNascimento = new Timestamp(date.getTime());
                 } catch (java.text.ParseException e) {
@@ -62,28 +57,33 @@ public class CadastroClienteController extends HttpServlet{
                 }
             }
 
-            String senha = request.getParameter("senha");
-            if (senha == null || senha.isEmpty()) {
-                erros.add("senha não informado!");
-            }
-
             if (!erros.isExisteErros()) {
                 ClienteDAO dao = new ClienteDAO();
                 Cliente cliente = new Cliente(nome, email, senha, "cliente", cpf, telefone, sexo, dataNascimento);
         
                 dao.insert(cliente);
+
+                request.getSession().setAttribute("usuarioLogado", cliente);
                 response.sendRedirect("index.jsp");
+            } else {
+                request.getSession().invalidate();
+
+                request.setAttribute("mensagens", erros);
+
+                request.setAttribute("nome", nome);
+                request.setAttribute("email", email);
+                request.setAttribute("cpf", cpf);
+                request.setAttribute("telefone", telefone);
+                request.setAttribute("sexo", sexo);
+                request.setAttribute("dataNascimento", dataNascimentoParam);
+
+                RequestDispatcher rd = request.getRequestDispatcher("cadastroCliente.jsp");
+                rd.forward(request, response);
             }
         }
 	}
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-
-        // request.setAttribute("mensagens", erros);
-
-        RequestDispatcher rd = request.getRequestDispatcher("/cadastroCliente.jsp");
-		rd.forward(request, response);
     }
 }

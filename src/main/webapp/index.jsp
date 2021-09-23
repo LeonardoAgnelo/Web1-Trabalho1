@@ -11,17 +11,7 @@
 </head>
 <body>
     <div class="home-container box">
-        <nav class="navbar-container">
-            <img class="logo" src="assets/logo.svg" />
-            <div class="right-side">
-                <a href="login.jsp" class="botao-login">
-                    Login
-                </a>
-                <a href="cadastro.jsp" class="botao-cadastro">
-                    Cadastre-se
-                </a>
-            </div>
-        </nav>
+        <jsp:include page="components/navbar.jsp" />
         <main>
             <div class="hero-container">
                 <p>
@@ -38,78 +28,9 @@
                         Filtrar
                     </button>
                 </div>
-                <div class="lista-pacotes">
-                    <div class="pacote">
-                        <div class="pacote-image" style="background-image: url('assets/hero.png');"></div>
-                        <div class="pacote-content">
-                            <div class="pacote-dados">
-                                <strong>Cidade</strong>
-                                <p>Data de partida</p>
-                                <p>10/12/19</p>
-                            </div>
-                            <div class="pacote-compra">
-                                <span>R$ 969</span>
-                                <a href="/compra/1">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pacote">
-                        <div class="pacote-image" style="background-image: url('assets/hero.png');"></div>
-                        <div class="pacote-content">
-                            <div class="pacote-dados">
-                                <strong>Cidade</strong>
-                                <p>Data de partida</p>
-                                <p>10/12/19</p>
-                            </div>
-                            <div class="pacote-compra">
-                                <span>R$ 969</span>
-                                <a href="/compra/1">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pacote">
-                        <div class="pacote-image" style="background-image: url('assets/hero.png');"></div>
-                        <div class="pacote-content">
-                            <div class="pacote-dados">
-                                <strong>Cidade</strong>
-                                <p>Data de partida</p>
-                                <p>10/12/19</p>
-                            </div>
-                            <div class="pacote-compra">
-                                <span>R$ 969</span>
-                                <a href="/compra/1">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pacote">
-                        <div class="pacote-image" style="background-image: url('assets/hero.png');"></div>
-                        <div class="pacote-content">
-                            <div class="pacote-dados">
-                                <strong>Cidade</strong>
-                                <p>Data de partida</p>
-                                <p>10/12/19</p>
-                            </div>
-                            <div class="pacote-compra">
-                                <span>R$ 969</span>
-                                <a href="/compra/1">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pacote">
-                        <div class="pacote-image" style="background-image: url('assets/hero.png');"></div>
-                        <div class="pacote-content">
-                            <div class="pacote-dados">
-                                <strong>Cidade</strong>
-                                <p>Data de partida</p>
-                                <p>10/12/19</p>
-                            </div>
-                            <div class="pacote-compra">
-                                <span>R$ 969</span>
-                                <a href="/compra/1">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <jsp:include page="components/listaPacotes.jsp">
+                    <jsp:param name="comprar" value="true" />
+                </jsp:include>
             </div>
         </main>
     </div>

@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS ExcellentVoyage;
+
 CREATE DATABASE ExcellentVoyage;
 
 USE ExcellentVoyage;

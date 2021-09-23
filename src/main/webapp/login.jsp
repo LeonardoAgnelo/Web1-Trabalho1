@@ -2,7 +2,6 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
-    <link rel="stSlesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="styles/login.css" />
+    <script type="text/javascript">
+        var usuario = "<%= session.getAttribute("usuarioLogado")%>";
+        if (usuario !== "null") {
+            window.location.href="index.jsp";
+        }
+    </script>
 </head>
 <body>
+    <c:set var="session" scope = "session" />
     <div class="login-container box">
         <a class="botao-voltar" href="javascript:history.go(-1)"><img src="assets/icons/arrow-left.svg" />Voltar</a>
         <img class="logo" src="assets/logo.svg" />
         <c:if test="${mensagens.existeErros}">
-            <div id="erro">
+            <div class="form-erro">
                 <ul>
                     <c:forEach var="erro" items="${mensagens.erros}">
                         <li> ${erro} </li>
@@ -25,13 +31,13 @@
                 </ul>
             </div>
         </c:if>
-        <form class="form-login" action="login2.jsp" method="post">
+        <form class="form-login" action="login" method="POST">
             <h1>Login</h1>
-            <input type="text" name="email" class="campo" placeholder="Digite seu e-mail" />
+            <input type="text" name="email" class="campo" placeholder="Digite seu e-mail" value="${email}"/>
             <input type="password" name="senha" class="campo" placeholder="Digite sua senha" />
             <input type="submit" name="bOK" value="Entrar"/>
-        </form>
             <a href="cadastro.jsp">cadastre-se</a>
+        </form>
     </div>
 </body>
 </html>

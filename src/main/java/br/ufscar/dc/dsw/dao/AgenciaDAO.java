@@ -14,7 +14,7 @@ public class AgenciaDAO extends GenericDAO {
 
     public void insert(Agencia agencia) {
 
-        String sql = "INSERT INTO Agencia (cnpj, nome, id_usuario) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO agencia (cnpj, descricao, id_usuario) VALUES (?, ?, ?)";
         //inserir na tabela usuario do banco de dados
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.insert(agencia);

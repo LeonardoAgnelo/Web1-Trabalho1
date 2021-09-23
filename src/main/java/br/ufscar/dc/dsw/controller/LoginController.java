@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.util.Erro;
+import br.ufscar.dc.dsw.util.Validator;
 
 
-@WebServlet(name = "login", urlPatterns = { "/login2.jsp", "/logout.jsp" })
+@WebServlet(name = "login", urlPatterns = { "/loginController" })
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -22,50 +23,39 @@ public class LoginController extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
-	}
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 		Erro erros = new Erro();
 		if (request.getParameter("bOK") != null) {
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
-			if (email == null || email.isEmpty()) {
-				erros.add("Email não informado!");
-			}
-			if (senha == null || senha.isEmpty()) {
-				erros.add("Senha não informada!");
-			}
+			erros = new Validator("Email", email).required().addErro(erros);
+			erros = new Validator("Senha", senha).required().addErro(erros);
+
 			if (!erros.isExisteErros()) {
 				UsuarioDAO dao = new UsuarioDAO();
 				Usuario usuario = dao.getByEmail(email);
 				if (usuario != null) {
 					if (usuario.getSenha().equals(senha)) {
 						request.getSession().setAttribute("usuarioLogado", usuario);
-						if (usuario.getTipo().equals("admin")) {
-							response.sendRedirect("admin/");
-						} else if(usuario.getTipo().equals("cliente")){
-							response.sendRedirect("cliente/");
-						}else {
-                            response.sendRedirect("agencia/");
-                        }
+						response.sendRedirect("index.jsp");
 						return;
 					} else {
 						erros.add("Senha inválida!");
+						request.setAttribute("email", email);
 					}
 				} else {
 					erros.add("Usuário não encontrado!");
 				}
 			}
 		}
-        request.getSession().invalidate();
+		request.getSession().invalidate();
 
 		request.setAttribute("mensagens", erros);
 
-		String URL = "/login.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(URL);
+		RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 		rd.forward(request, response);
 	}
     
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
 }
