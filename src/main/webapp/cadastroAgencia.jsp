@@ -59,7 +59,7 @@
                     <input class="campo" id="confirmar-senha" name="confirmar-senha" type="password"/>
                 </div>
             </div>
-            <input class="submit" type="submit" name="bOK" value="<fmt:message key='cadastro.cadastrar'/>"/>
+            <input class="submit" type="submit" name="bOK" value="<fmt:message key='cadastro.cadastrar'/>" />
         </form>
     </div>
 </body>
