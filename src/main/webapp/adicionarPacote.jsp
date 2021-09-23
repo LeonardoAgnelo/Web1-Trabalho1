@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAdicionar pacote | Excellent Voyage</title>
+    <title>Adicionar pacote | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/cadastro-cliente.css" />
     <script type="text/javascript">
@@ -29,7 +29,7 @@
                 </ul>
             </div>
         </c:if>
-        <form class="form-cadastro-cliente" action="cadastroCliente" method="POST" >
+        <form class="form-cadastro-cliente" action="adicionarPacote" method="POST" >
             <h1>Adicionar pacote</h1>
             <div class="campos">
                 <div class="campo-container">
