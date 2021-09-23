@@ -60,7 +60,7 @@ public class ClienteDAO extends GenericDAO {
 
     public List<Cliente> getAll() {
         List<Cliente> listaCliente = new ArrayList<>();
-        String sql = "SELECT FROM cliente c ORDER BY id";
+        String sql = "SELECT * FROM cliente c, usuario u WHERE c.id_usuario=u.id ORDER BY u.id";
 
         try{
             Connection conn = getConnection();

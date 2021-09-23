@@ -61,7 +61,7 @@ public class AgenciaDAO extends GenericDAO {
 
     public List<Agencia> getAll() {
         List<Agencia> listaAgencia = new ArrayList<>();
-        String sql = "SELECT FROM agencia a ORDER BY id";
+        String sql = "SELECT * FROM agencia a, usuario u WHERE a.id_usuario=u.id ORDER BY u.id";
 
         try{
             Connection conn = getConnection();
