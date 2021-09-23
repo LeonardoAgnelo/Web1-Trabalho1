@@ -18,5 +18,4 @@ abstract public class GenericDAO{
 
         return DriverManager.getConnection(url, "root", "root");
     }
-
 }

@@ -32,6 +32,10 @@ public class PacoteTuristicoDAO extends GenericDAO {
             statement.setFloat(7, pacoteTuristico.getValor());
             statement.setString(8, pacoteTuristico.getDescricao());
             statement.setInt(9, pacoteTuristico.getQtdFotos());
+            statement.executeUpdate();
+
+            statement.close();
+            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

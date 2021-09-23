@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.controller;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.util.Erro;
+import br.ufscar.dc.dsw.util.Util;
 import br.ufscar.dc.dsw.util.Validator;
 
 @WebServlet(urlPatterns = { "/cadastroClienteController" })
@@ -32,30 +34,18 @@ public class CadastroClienteController extends HttpServlet{
             String cpf = request.getParameter("cpf");
             String telefone = request.getParameter("telefone");
             String sexo = request.getParameter("sexo");
-            String dataNascimentoParam = request.getParameter("data-nascimento");
+            Timestamp dataNascimento = Util.convertStringToTimestamp(request.getParameter("data-nascimento"));
             String senha = request.getParameter("senha");
             String confirmarSenha = request.getParameter("confirmar-senha");
 
-            erros = new Validator("Nome", nome).required().addErro(erros);
-            erros = new Validator("Email", email).required().email().addErro(erros);
-            erros = new Validator("CPF", cpf).required().addErro(erros);
-            erros = new Validator("Telefone", telefone).required().addErro(erros);
-            erros = new Validator("Sexo", sexo).required().addErro(erros);
-            erros = new Validator("Data de nascimento", dataNascimentoParam).required().addErro(erros);
-            erros = new Validator("Senha", senha).required().addErro(erros);
-            erros = new Validator("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
-
-            Timestamp dataNascimento = null;
-            
-            if (dataNascimentoParam != null && !dataNascimentoParam.isEmpty()) {
-                try {
-                    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                    Date date = formatter.parse(dataNascimentoParam);
-                    dataNascimento = new Timestamp(date.getTime());
-                } catch (java.text.ParseException e) {
-                    erros.add(e.toString());
-                }
-            }
+            erros = new Validator<String>("Nome", nome).required().addErro(erros);
+            erros = new Validator<String>("Email", email).required().email().addErro(erros);
+            erros = new Validator<String>("CPF", cpf).required().addErro(erros);
+            erros = new Validator<String>("Telefone", telefone).required().addErro(erros);
+            erros = new Validator<String>("Sexo", sexo).required().addErro(erros);
+            erros = new Validator<Timestamp>("Data de nascimento", dataNascimento).required().addErro(erros);
+            erros = new Validator<String>("Senha", senha).required().addErro(erros);
+            erros = new Validator<String>("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
 
             if (!erros.isExisteErros()) {
                 ClienteDAO dao = new ClienteDAO();
@@ -75,7 +65,9 @@ public class CadastroClienteController extends HttpServlet{
                 request.setAttribute("cpf", cpf);
                 request.setAttribute("telefone", telefone);
                 request.setAttribute("sexo", sexo);
-                request.setAttribute("dataNascimento", dataNascimentoParam);
+                if (dataNascimento != null) {
+                    request.setAttribute("dataNascimento", dataNascimento.toString());
+                }
 
                 RequestDispatcher rd = request.getRequestDispatcher("cadastroCliente.jsp");
                 rd.forward(request, response);

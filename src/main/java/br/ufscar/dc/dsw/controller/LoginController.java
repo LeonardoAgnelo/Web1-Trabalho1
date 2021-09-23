@@ -27,8 +27,8 @@ public class LoginController extends HttpServlet {
 		if (request.getParameter("bOK") != null) {
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
-			erros = new Validator("Email", email).required().addErro(erros);
-			erros = new Validator("Senha", senha).required().addErro(erros);
+			erros = new Validator<String>("Email", email).required().addErro(erros);
+			erros = new Validator<String>("Senha", senha).required().addErro(erros);
 
 			if (!erros.isExisteErros()) {
 				UsuarioDAO dao = new UsuarioDAO();

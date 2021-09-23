@@ -30,12 +30,12 @@ public class CadastroAgenciaController extends HttpServlet{
             String senha = request.getParameter("senha");
             String confirmarSenha = request.getParameter("confirmar-senha");
 
-            erros = new Validator("Nome", nome).required().addErro(erros);
-            erros = new Validator("Email", email).required().email().addErro(erros);
-            erros = new Validator("CNPJ", cnpj).required().addErro(erros);
-            erros = new Validator("Descrição", descricao).required().addErro(erros);
-            erros = new Validator("Senha", senha).required().addErro(erros);
-            erros = new Validator("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
+            erros = new Validator<String>("Nome", nome).required().addErro(erros);
+            erros = new Validator<String>("Email", email).required().email().addErro(erros);
+            erros = new Validator<String>("CNPJ", cnpj).required().addErro(erros);
+            erros = new Validator<String>("Descrição", descricao).required().addErro(erros);
+            erros = new Validator<String>("Senha", senha).required().addErro(erros);
+            erros = new Validator<String>("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
 
 
             if (!erros.isExisteErros()) {
