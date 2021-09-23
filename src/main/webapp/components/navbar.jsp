@@ -9,7 +9,7 @@
     <c:choose>
         <c:when test="${sessionScope.usuarioLogado != null}">
             <div class="right-side">
-                <a href="perfil.jsp" class="botao-logado">
+                <a href="perfil" class="botao-logado">
                     <img src="assets/icons/person-circle.svg"/> ${sessionScope.usuarioLogado.nome}
                 </a>
                 <a href="${pageContext.request.contextPath}/logout" class="botao-logado">

@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
             <jsp:include page="components/perfilCliente.jsp"/>
         </c:if>
         <c:if test="${sessionScope.usuarioLogado.tipo == 'admin'}">
-            <p>Admin</p>
+            <jsp:include page="/components/perfilAdmin.jsp"/>
         </c:if>
     </div>
 </body>
