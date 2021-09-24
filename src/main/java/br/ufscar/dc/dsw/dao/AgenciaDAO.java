@@ -40,6 +40,27 @@ public class AgenciaDAO extends GenericDAO {
         }
     }
 
+    public void update(Agencia agencia) {
+        String sql = "UPDATE agencia SET cnpj = ?, descricao = ? WHERE id_usuario = ?";
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarioDAO.update(agencia);
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, agencia.getCnpj());
+            statement.setString(2, agencia.getDescricao());
+            statement.setLong(3, agencia.getId());
+            statement.executeUpdate();
+
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void delete(Agencia agencia) {
         String sql = "DELETE FROM agencia where id_usuario = ?";
@@ -87,5 +108,37 @@ public class AgenciaDAO extends GenericDAO {
             throw new RuntimeException(e);
         }
         return listaAgencia;
+    }
+    public Agencia getById(Long id){
+        Agencia agencia = null;
+
+        String sql = "SELECT * FROM agencia a, usuario u WHERE a.id_usuario=u.id AND u.id = ?";
+
+        try{   
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String tipo = resultSet.getString("tipo");
+                String cnpj = resultSet.getString("cnpj");
+                String descricao = resultSet.getString("descricao");
+
+                agencia = new Agencia(id, nome, email, senha, tipo, cnpj, descricao);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        return agencia;
+
     }
 }
