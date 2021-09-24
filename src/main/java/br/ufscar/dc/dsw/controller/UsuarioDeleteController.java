@@ -13,8 +13,8 @@ import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
 
 
-@WebServlet(urlPatterns = { "/ClienteDelete" })
-public class ClienteDeleteController extends HttpServlet{
+@WebServlet(urlPatterns = { "/UsuarioDelete" })
+public class UsuarioDeleteController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 	private UsuarioDAO dao;
 
