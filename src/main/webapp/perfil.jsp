@@ -1,14 +1,15 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html>
+<fmt:bundle basename="message">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil | Excellent Voyage</title>
+    <title><fmt:message key="perfil.title"/> | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/perfil.css" />
     <script type="text/javascript">
@@ -32,4 +33,5 @@
         </c:if>
     </div>
 </body>
+</fmt:bundle>
 </html>
