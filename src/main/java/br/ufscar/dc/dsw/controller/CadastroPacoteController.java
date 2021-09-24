@@ -56,7 +56,7 @@ public class CadastroPacoteController extends HttpServlet {
             Float valor = Float.parseFloat(valorParameter == null || valorParameter.isEmpty() ? "0" : valorParameter);
             Part descricao = request.getPart("descricao");
             List<Part> fileParts = request.getParts().stream().filter(part -> "fotos".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());
-
+                // é pra dar erro no vscode ta funcionando perfeitamente
             erros = new Validator<String>("Cidade", cidade).required().addErro(erros);
             erros = new Validator<String>("Estado", estado).required().addErro(erros);
             erros = new Validator<String>("País", pais).required().addErro(erros);
