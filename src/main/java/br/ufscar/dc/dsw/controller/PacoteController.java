@@ -1,7 +1,7 @@
 package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
-import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.PacoteTuristico;
-import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.dao.PacoteTuristicoDAO;
 //import br.ufscar.dc.dsw.util.Erro;
 

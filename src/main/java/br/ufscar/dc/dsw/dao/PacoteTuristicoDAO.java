@@ -140,7 +140,6 @@ public class PacoteTuristicoDAO extends GenericDAO {
 
         return listaPacotesTuristicos;
     }
-
     public PacoteTuristico getById(Integer id) {
         String sql = "SELECT * FROM pacote_turistico p, agencia a, usuario u WHERE p.id = ?  AND a.cnpj=p.cnpj_agencia  and a.id_usuario=u.id";
         PacoteTuristico pacote = null;
