@@ -1,19 +1,24 @@
 package br.ufscar.dc.dsw.domain;
 
 public class Foto {
-    private Integer idPacote;
+    private Long idPacote;
     private String url;
 
-    public Foto(Integer idPacote, String url) {
+    public Foto(Long idPacote, String url) {
         this.setIdPacote(idPacote);
         this.setUrl(url);
     }
 
-    public Integer getIdPacote() {
+    public Foto(String url) {
+        super();
+        this.setUrl(url);
+    }
+
+    public Long getIdPacote() {
         return idPacote;
     }
 
-    public void setIdPacote(Integer idPacote) {
+    public void setIdPacote(Long idPacote) {
         this.idPacote = idPacote;
     }
 

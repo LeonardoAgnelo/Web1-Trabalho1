@@ -1,4 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
@@ -22,20 +24,26 @@
                 <img src="assets/hero.png" />
             </div>
             <div class="pacotes-container">
-                <div class="filtro">
-                    <input type="text" class="campo" placeholder="<fmt:message key='index.destino'/>" style="width: 350px;" />
-                    <input type="text" class="campo" placeholder="<fmt:message key='index.agencia'/>" style="width: 350px;" />
-                    <input type="text" class="campo" placeholder="<fmt:message key='index.data'/>" onfocus="(this.type='date')" style="width: 250px;"/>
-                    <button type="submit" class="botao-filtrar">
-                        <fmt:message key="index.filtro"/>
-                    </button>
-                </div>
+                <form id="form" class="filtro" action="home" method="POST">
+                    <input type="text" class="campo" name="destino" placeholder="<fmt:message key='index.destino'/>" value="${destino}" style="width: 350px;" />
+                    <input type="text" class="campo" name="agencia" placeholder="<fmt:message key='index.agencia'/>" value="${agencia}" style="width: 350px;" />
+                    <input type="text" class="campo" name="data-partida" placeholder="<fmt:message key='index.data'/>" value="${dataPartida}" onfocus="(this.type='date')" style="width: 250px;"/>
+                    <input type="submit" id="submit" class="botao-filtrar" value="<fmt:message key='index.filtro'/>"/>
+                </form>
                 <jsp:include page="components/listaPacotes.jsp">
                     <jsp:param name="comprar" value="true" />
                 </jsp:include>
             </div>
         </main>
     </div>
+
+    <script type="text/javascript">
+        const submit = document.getElementById("submit");
+        const paths = location.pathname.split("/");
+        if (paths[paths.length - 1] !== "home") {
+            submit.click();
+        }
+    </script>
 </body>
 
 </fmt:bundle>

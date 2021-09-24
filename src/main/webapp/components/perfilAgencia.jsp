@@ -13,7 +13,7 @@
                 <fmt:message key="agencia.text"/>
             </p>
         </div>
-        <a href="adicionarPacote.jsp" class="botao-adicionarpacote">
+        <a href="adicionarPacote.jsp" type="submit" class="botao-adicionarpacote">
             <fmt:message key="agencia.addPacote"/>
         </a>
     </div>

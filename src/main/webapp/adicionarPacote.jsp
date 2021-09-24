@@ -31,7 +31,7 @@
                 </ul>
             </div>
         </c:if>
-        <form class="form-cadastro-cliente" action="adicionarPacote" method="POST" >
+        <form class="form-cadastro-cliente" action="cadastroPacote" method="POST" enctype="multipart/form-data">
             <h1><fmt:message key="addPacote.title"/></h1>
             <div class="campos">
                 <div class="campo-container">
@@ -56,17 +56,15 @@
                 </div>
                 <div class="campo-container">
                     <label for="duracao"><fmt:message key="pacote.duracao"/></label>
-                    <input class="campo" id="duracao" name="duracao" type="text" value="${duracao}"/>
+                    <input class="campo" id="duracao" name="duracao" type="number" value="${duracao}"/>
                 </div>
                 <div class="campo-container">
                     <label for="descricao"><fmt:message key="pacote.descricao"/></label>
-                    <input type="hidden" id="descricao" name="descricao" value="${descricao}" />
-                    <input style="font-size: 20px;" type="file"/>
+                    <input type="file" id="descricao" name="descricao" value="${descricao}"/>
                 </div>
                 <div class="campo-container">
-                    <label for="foto"><fmt:message key="addPacote.fotos"/></label>
-                    <input type="hidden" id="foto" name="foto" value="${foto}" />
-                    <input style="font-size: 20px;" type="file"/>
+                    <label for="fotos"><fmt:message key="addPacote.fotos"/></label>
+                    <input type="file" id="fotos" name="fotos" multiple />
                 </div>
             </div>
             <input class="submit" type="submit" name="bOK" value="<fmt:message key='addPacote.botao'/>" />

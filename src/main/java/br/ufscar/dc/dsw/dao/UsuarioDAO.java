@@ -3,8 +3,11 @@ package br.ufscar.dc.dsw.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.ResultSet;
 
+import br.ufscar.dc.dsw.domain.Agencia;
+import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Usuario;
 
 public class UsuarioDAO extends GenericDAO{
@@ -93,7 +96,7 @@ public class UsuarioDAO extends GenericDAO{
     public Usuario getByEmail(String email){
         Usuario usuario = null;
 
-        String sql = "SELECT * FROM usuario WHERE email = ?";
+        String sql = "SELECT * FROM usuario LEFT JOIN agencia ON usuario.id = agencia.id_usuario LEFT JOIN cliente ON usuario.id = cliente.id_usuario WHERE usuario.email = ?";
 
         try{
             Connection conn = this.getConnection();
@@ -107,7 +110,19 @@ public class UsuarioDAO extends GenericDAO{
                 String senha = resultSet.getString("senha");
                 String tipo = resultSet.getString("tipo");
 
-                usuario = new Usuario(id, nome, email, senha, tipo);
+                if (tipo.equals("agencia")) {
+                    String cnpj = resultSet.getString("cnpj");
+                    String descricao = resultSet.getString("descricao");
+                    usuario = new Agencia(id, nome, email, senha, tipo, cnpj, descricao);
+                } else if (tipo.equals("cliente")) {
+                    String cpf = resultSet.getString("cpf");
+                    String telefone = resultSet.getString("telefone");
+                    String sexo = resultSet.getString("sexo");
+                    Timestamp dataNascimento = resultSet.getTimestamp("data_nascimento");
+                    usuario = new Cliente(id, nome, email, senha, tipo, cpf, telefone, sexo, dataNascimento);
+                } else {
+                    usuario = new Usuario(id, nome, email, senha, tipo);
+                }
             }
 
             resultSet.close();

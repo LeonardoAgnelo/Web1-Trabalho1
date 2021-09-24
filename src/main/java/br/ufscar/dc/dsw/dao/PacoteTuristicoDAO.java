@@ -32,26 +32,66 @@ public class PacoteTuristicoDAO extends GenericDAO {
             statement.setFloat(7, pacoteTuristico.getValor());
             statement.setString(8, pacoteTuristico.getDescricao());
             statement.setInt(9, pacoteTuristico.getQtdFotos());
+            statement.executeUpdate();
+
+            if (pacoteTuristico.getQtdFotos() > 0) {
+                Long idPacote = getLastInsertId();
+
+                FotoDAO fotoDao = new FotoDAO();
+
+                for(Foto foto : pacoteTuristico.getFotos()) {
+                    foto.setIdPacote(idPacote);
+                    fotoDao.insert(foto);
+                }
+            }
+
+            statement.close();
+            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public Long getLastInsertId() {
+        String sql = "SELECT MAX(id) as id FROM pacote_turistico";
+
+        Long id = null;
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement = conn.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()) {
+                id = resultSet.getLong("id");
+            }
+
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return id;
+    }
+
     public List<PacoteTuristico> getAll(String destino, String agencia, Timestamp dataPartida) {
         List<PacoteTuristico> listaPacotesTuristicos = new ArrayList<>();
 
-        String sql = "SELECT * FROM pacote_turistico p, agencia a, usuario u WHERE (p.cnpj = a.cnpj_agencia AND a.id_usuario = u.id)";
+        String sql = "SELECT * FROM pacote_turistico p, agencia a, usuario u WHERE (p.cnpj_agencia = a.cnpj AND a.id_usuario = u.id)";
 
         if (!destino.isEmpty() && destino != null) {
-            sql = sql.concat(" AND (p.destino_cidade LIKE %" + destino + "% OR p.destino_estado LIKE %" + destino + "% OR p.destino_pais LIKE %" + destino + "%");
+            sql = sql + " AND (p.destino_cidade LIKE '%" + destino + "%' OR p.destino_estado LIKE '%" + destino + "%' OR p.destino_pais LIKE '%" + destino + "%')";
         }
 
         if (!agencia.isEmpty() && agencia != null) {
-            sql = sql.concat(" WHERE u.nome LIKE %" + agencia + "%");
+            sql = sql +" AND u.nome LIKE '%" + agencia + "%'";
         }
 
         if (dataPartida != null) {
-            sql = sql.concat(" WHERE p.dataPartida LIKE %" + dataPartida + "%");
+            sql = sql + " AND p.data_partida = '" + dataPartida + "'";
         }
 
         sql.concat(" ORDER BY p.id");
@@ -81,7 +121,7 @@ public class PacoteTuristicoDAO extends GenericDAO {
                 Integer duracaoDias = resultSet.getInt("duracao_dias");
                 Float valor = resultSet.getFloat("valor");
                 String descricao = resultSet.getString("descricao");
-                Integer qtdFotos = resultSet.getInt("foto");
+                Integer qtdFotos = resultSet.getInt("qtd_foto");
 
                 Destino destinoModel = new Destino(destinoCidade, destinoEstado, destinoPais);
 
