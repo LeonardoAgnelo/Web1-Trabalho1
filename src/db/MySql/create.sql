@@ -57,9 +57,9 @@ CREATE TABLE `compra` (
 	PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `cliente` ADD CONSTRAINT `cliente_fk0` FOREIGN KEY (`id_usuario`) REFERENCES `usuario`(`id`);
+ALTER TABLE `cliente` ADD CONSTRAINT `cliente_fk0` FOREIGN KEY (`id_usuario`) REFERENCES `usuario`(`id`) ON DELETE CASCADE;
 
-ALTER TABLE `agencia` ADD CONSTRAINT `agencia_fk0` FOREIGN KEY (`id_usuario`) REFERENCES `usuario`(`id`);
+ALTER TABLE `agencia` ADD CONSTRAINT `agencia_fk0` FOREIGN KEY (`id_usuario`) REFERENCES `usuario`(`id`) ON DELETE CASCADE;
 
 ALTER TABLE `pacote_turistico` ADD CONSTRAINT `pacote_turistico_fk0` FOREIGN KEY (`cnpj_agencia`) REFERENCES `agencia`(`cnpj`);
 
