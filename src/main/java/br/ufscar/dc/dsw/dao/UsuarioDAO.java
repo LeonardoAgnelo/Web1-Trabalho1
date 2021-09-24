@@ -31,7 +31,7 @@ public class UsuarioDAO extends GenericDAO{
     }
 
     public void update(Usuario usuario) {
-        String sql = "UPDATE cliente SET nome = ?, email = ?, senha = ?, WHERE id = ?";
+        String sql = "UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ?";
 
         try {
             Connection conn = this.getConnection();
@@ -40,7 +40,7 @@ public class UsuarioDAO extends GenericDAO{
             statement.setString(1, usuario.getNome());
             statement.setString(2, usuario.getEmail());
             statement.setString(3, usuario.getSenha());
-            statement.setLong(5, usuario.getId());
+            statement.setLong(4, usuario.getId());
             statement.executeUpdate();
 
             statement.close();

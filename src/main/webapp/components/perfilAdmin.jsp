@@ -2,6 +2,10 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%
+		String contextPath = request.getContextPath().replace("/", "");
+	%>
+
 <main>
     <div class="texto-inicio">
         <h1>
@@ -23,6 +27,9 @@
 				<th>Sexo</th>
 				<th>Telefone</th>
 				<th>Data nascimneto</th>
+				<th>Editar</th>
+				<th>Remover</th>
+
 			</tr>
 			<c:forEach var="Cliente" items="${requestScope.listaCliente}">
 				<tr>
@@ -33,6 +40,10 @@
 					<td>${Cliente.sexo}</td>
 					<td>${Cliente.telefone}</td>
                     <td>${Cliente.dataNascimento}</td>
+					<td><a href="/<%=contextPath%>/ClienteEditar?id=${Cliente.id}">Edição </a></td>
+					<td><a href="/<%= contextPath%>/ClienteDelete?id=${Cliente.id}"
+						onclick="return confirm('Tem certeza de que deseja excluir este usuário?');">Remover </a></td>
+
 			    </tr>
             </c:forEach>
 </div>
@@ -54,8 +65,8 @@
 					<td>${Agencia.nome}</td>
 					<td>${Agencia.cnpj}</td>
 					<td>${Agencia.email}</td>
-                    <td><a href="">edição</td>
-                    <td><a hrf></td>
+                    <td><a href="">edição</a></td>
+                    <td><a hrf="">Remover </a></td>
                     
 			    </tr>
 			</c:forEach>
