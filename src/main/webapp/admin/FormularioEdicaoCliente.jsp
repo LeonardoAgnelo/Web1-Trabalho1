@@ -89,7 +89,7 @@
                     <input class="campo" id="id" name="id" type="text" readonly="readonly" value="${cliente.id}"/>
                 </div>
             </div>
-            <input class="submit" type="submit" name="bOK" value="Cadastrar" />
+            <input class="submit" type="submit" name="bOK" value="Editar" />
         </form>
     </div>
 </body>
