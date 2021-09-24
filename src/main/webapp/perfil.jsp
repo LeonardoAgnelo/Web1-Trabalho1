@@ -12,6 +12,7 @@
     <title><fmt:message key="perfil.title"/> | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/perfil.css" />
+    <link rel="stylesheet" href="styles/components/perfil-admin.css" />
     <script type="text/javascript">
         var usuario = "<%= session.getAttribute("usuarioLogado")%>";
         if (usuario === "null") {
