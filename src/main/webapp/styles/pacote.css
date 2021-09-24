@@ -80,7 +80,7 @@
     align-items: flex-end;
 }
 
-.informacoes-pacote .pacote-compra a{
+.informacoes-pacote .pacote-compra input[type="submit"]{
     width: 250px;
     height: 80px;
 
@@ -90,6 +90,7 @@
 
     background: var(--degrade);
 
+    border: 0;
     border-radius: 15px;
 
     display: flex;
@@ -99,6 +100,6 @@
     transition: all 0.2s;
 }
 
-.informacoes-pacote .pacote-compra a:hover{
+.informacoes-pacote .pacote-compra input[type="submit"]:hover{
     opacity: 0.8;
 }
