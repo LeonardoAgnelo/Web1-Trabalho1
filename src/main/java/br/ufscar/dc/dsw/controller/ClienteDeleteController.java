@@ -14,7 +14,7 @@ import br.ufscar.dc.dsw.dao.UsuarioDAO;
 
 
 @WebServlet(urlPatterns = { "/ClienteDelete" })
-public class ClienteDelete extends HttpServlet{
+public class ClienteDeleteController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 	private UsuarioDAO dao;
 

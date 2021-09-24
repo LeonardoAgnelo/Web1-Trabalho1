@@ -19,7 +19,7 @@ import br.ufscar.dc.dsw.util.Erro;
 import br.ufscar.dc.dsw.util.Validator;
 
 @WebServlet(urlPatterns = { "/ClienteUpdate" })
-public class ClienteUpdate extends HttpServlet{
+public class ClienteUpdateController extends HttpServlet{
     private static final long serialVersionUID = 1L;
     
 	@Override
