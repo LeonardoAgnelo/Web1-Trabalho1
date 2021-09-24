@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Util {
@@ -17,5 +18,10 @@ public class Util {
             System.out.println("Exception: " + e);
             return null;
         }
+    }
+
+    public static String convertTimestampToString(Timestamp date) {
+        LocalDateTime localDate = date.toLocalDateTime();
+        return localDate.getDayOfMonth() + "/" + localDate.getMonth().getValue() + "/" + localDate.getYear();
     }
 }

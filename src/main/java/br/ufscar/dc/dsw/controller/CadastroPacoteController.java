@@ -94,7 +94,7 @@ public class CadastroPacoteController extends HttpServlet {
                         for (Part filePart : fileParts) {
                             String fotoPath = uploadPath + File.separator + filePart.getSubmittedFileName();
                             filePart.write(fotoPath);
-                            fotos.add(new Foto(fotoPath));
+                            fotos.add(new Foto(UPLOAD_DIRECTORY + "/" + filePart.getSubmittedFileName()));
                         }
                     } catch (Exception ex) {
                         erros.add("Erro no upload: " + ex.getMessage());
@@ -106,7 +106,7 @@ public class CadastroPacoteController extends HttpServlet {
                 Agencia agencia = (Agencia) request.getSession().getAttribute("usuarioLogado");
                 Destino destino = new Destino(cidade, estado, pais);
                 PacoteTuristicoDAO dao = new PacoteTuristicoDAO();
-                PacoteTuristico pacoteTuristico = new PacoteTuristico(agencia, destino, dataPartida, duracaoDias, valor, descricaoPath, fotos.size(), fotos);
+                PacoteTuristico pacoteTuristico = new PacoteTuristico(agencia, destino, dataPartida, duracaoDias, valor, UPLOAD_DIRECTORY + "/" + descricao.getSubmittedFileName(), fotos.size(), fotos);
         
                 dao.insert(pacoteTuristico);
 

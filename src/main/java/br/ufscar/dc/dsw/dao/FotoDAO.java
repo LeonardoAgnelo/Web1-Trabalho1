@@ -35,7 +35,7 @@ public class FotoDAO extends GenericDAO {
 
         List<Foto> listaFoto = new ArrayList<>();
 
-        String sql = "SELECT * from foto l e where id_pacote = " + idPacote;
+        String sql = "SELECT * FROM foto WHERE id_pacote=" + idPacote;
 
         try {
             Connection conn = this.getConnection();

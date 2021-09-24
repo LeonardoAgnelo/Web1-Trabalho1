@@ -12,7 +12,7 @@
     <title><fmt:message key="cadastro.title"/> | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/cadastro-cliente.css" />
-    <script type="text/javascript">Cadastro
+    <script type="text/javascript">
         var usuario = "<%= session.getAttribute("usuarioLogado")%>";
         if (usuario !== "null") {
             window.location.href="index.jsp";
