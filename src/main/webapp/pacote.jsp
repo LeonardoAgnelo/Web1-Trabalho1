@@ -1,5 +1,8 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="br.ufscar.dc.dsw.util.Util" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,34 +19,37 @@
     <div class="home-container box">
         <jsp:include page="components/navbar.jsp" />
         <main>
+
             <div class="pacote-container">
-                <div class="lista-fotos">
-                        <div class="foto" style="background-image: url('assets/hero.png');"></div>
-                        <div class="foto" style="background-image: url('assets/hero.png');"></div>
-                        <div class="foto" style="background-image: url('assets/hero.png');"></div>
+            
+                <div class="lista-fotos" var="fotos" items="${pacote.fotos}">
+                <c:forEach  var="fotos" items="${pacote.fotos}">
+                        <div class="foto" style="background-image: url('${fotos.url}');"></div>
+                        <!--<div class="foto" style="background-image: url('assets/hero.png');"></div>
+                        <div class="foto" style="background-image: url('assets/hero.png');"></div>-->
+                </c:forEach>
                 </div>       
-                    
 
                 <div class="informacoes-pacote">
                         <div class="pacote-infos">
-                            <h1>Cidade</h1>
-                            <h2><fmt:message key="pacote.viagemPor"/> <strong>Delano</strong></h2>
+                            <h1>${pacote.destino.cidade}</h1>
+                            <h2><fmt:message key="pacote.viagemPor"/> <strong>${pacote.agencia.nome}</strong></h2>
                             <p><fmt:message key="pacote.valor"/></p>
-                            <h2 id="pacote-preco">R$ 700,00</h2>
+                            <h2 id="pacote-preco"><fmt:message key="listapacote.moeda"/>${pacote.valor}</h2>
                             <h2 id="info-adicionais"><fmt:message key="pacote.infos"/></h2>
                             <p><fmt:message key="pacote.estado"/></p>
-                            <h3>São Paulo</h3>
+                            <h3>${pacote.destino.estado}</h3>
                             <p><fmt:message key="pacote.pais"/></p>
-                            <h3>Brasil</h3>
+                            <h3>${pacote.destino.pais}</h3>
                             <p><fmt:message key="pacote.dataPartida"/></p>
-                            <h3>20/09/2021</h3>
+                            <h3>${Util.convertTimestampToString(pacote.dataPartida)}</h3>
                             <p><fmt:message key="pacote.duracao"/></p>
-                            <h3>12 dias</h3>
+                            <h3>${pacote.duracaoDias}</h3>
                             <p><fmt:message key="pacote.descricao"/></p>
-                            <h3>Arquivo aqui</h3>
+                            <h3 href="${pacote.descricao}"> <fmt:message key="pacote.descricao"/></h3>
                         </div>
                         <div class="pacote-compra">
-                            <a href="/compra/1"><fmt:message key="pacote.comprar"/></a>
+                            <a href="/compra/${pacote.id}"><fmt:message key="pacote.comprar"/></a>
                         </div>
                 </div>
             </div>
