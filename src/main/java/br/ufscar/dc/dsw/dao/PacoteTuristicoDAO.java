@@ -2,6 +2,8 @@ package br.ufscar.dc.dsw.dao;
 
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,6 +79,101 @@ public class PacoteTuristicoDAO extends GenericDAO {
         return id;
     }
 
+    public PacoteTuristico getById(String idPacote) {
+        String sql = "SELECT * FROM pacote_turistico p, usuario u, agencia a WHERE p.id = " + idPacote + " AND p.cnpj_agencia = a.cnpj AND u.id = a.id_usuario";
+
+        PacoteTuristico pacote = null;
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                Long idUsuario = resultSet.getLong("id_usuario");
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String tipo = resultSet.getString("tipo");
+                String cnpj = resultSet.getString("cnpj");
+                String descricaoAgencia = resultSet.getString("descricao");
+                Agencia agenciaDomain = new Agencia(idUsuario, nome, email, senha, tipo, cnpj, descricaoAgencia);
+
+                Long id = resultSet.getLong("id");
+                String destinoCidade = resultSet.getString("destino_cidade");
+                String destinoEstado = resultSet.getString("destino_estado");
+                String destinoPais = resultSet.getString("destino_pais");
+                Timestamp dataPartidaPacote = resultSet.getTimestamp("data_partida");
+                Integer duracaoDias = resultSet.getInt("duracao_dias");
+                Float valor = resultSet.getFloat("valor");
+                String descricao = resultSet.getString("descricao");
+                Integer qtdFotos = resultSet.getInt("qtd_foto");
+
+                Destino destinoModel = new Destino(destinoCidade, destinoEstado, destinoPais);
+
+                List<Foto> fotos = new FotoDAO().getAllById(id);
+
+                pacote = new PacoteTuristico(id, agenciaDomain, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos, fotos);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return pacote;
+    }
+
+    public List<PacoteTuristico> getByAgencia(Agencia agencia, Boolean vigente) {
+        String sql = "SELECT * FROM pacote_turistico WHERE cnpj_agencia = " + agencia.getCnpj();
+
+        if (vigente) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date date = new java.util.Date();
+            String currentDate = dateFormat.format(date);
+            sql = sql + " AND DATE(data_partida) > '" + currentDate + "'";
+        }
+
+        List<PacoteTuristico> listaPacotes =  new ArrayList<>();
+
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String destinoCidade = resultSet.getString("destino_cidade");
+                String destinoEstado = resultSet.getString("destino_estado");
+                String destinoPais = resultSet.getString("destino_pais");
+                Timestamp dataPartidaPacote = resultSet.getTimestamp("data_partida");
+                Integer duracaoDias = resultSet.getInt("duracao_dias");
+                Float valor = resultSet.getFloat("valor");
+                String descricao = resultSet.getString("descricao");
+                Integer qtdFotos = resultSet.getInt("qtd_foto");
+
+                Destino destinoModel = new Destino(destinoCidade, destinoEstado, destinoPais);
+
+                List<Foto> fotos = new FotoDAO().getAllById(id);
+
+                PacoteTuristico pacote = new PacoteTuristico(id, agencia, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos, fotos);
+
+                listaPacotes.add(pacote);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return listaPacotes;
+    }
+
     public List<PacoteTuristico> getAll(String destino, String agencia, Timestamp dataPartida) {
         List<PacoteTuristico> listaPacotesTuristicos = new ArrayList<>();
 
@@ -94,7 +191,7 @@ public class PacoteTuristicoDAO extends GenericDAO {
             sql = sql + " AND p.data_partida = '" + dataPartida + "'";
         }
 
-        sql.concat(" ORDER BY p.id");
+        sql = sql + " ORDER BY p.id";
 
         try {
             Connection conn = this.getConnection();
@@ -113,7 +210,7 @@ public class PacoteTuristicoDAO extends GenericDAO {
 
                 
 
-                Integer id = resultSet.getInt("id");
+                Long id = resultSet.getLong("id");
                 String destinoCidade = resultSet.getString("destino_cidade");
                 String destinoEstado = resultSet.getString("destino_estado");
                 String destinoPais = resultSet.getString("destino_pais");
@@ -139,52 +236,5 @@ public class PacoteTuristicoDAO extends GenericDAO {
         }
 
         return listaPacotesTuristicos;
-    }
-    public PacoteTuristico getById(Integer id) {
-        String sql = "SELECT * FROM pacote_turistico p, agencia a, usuario u WHERE p.id = ?  AND a.cnpj=p.cnpj_agencia  and a.id_usuario=u.id";
-        PacoteTuristico pacote = null;
-
-        try {
-            Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);
-
-
-            statement.setInt(1, id);
-            ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
-                Long idUsuario = resultSet.getLong("id_usuario");
-                String nome = resultSet.getString("nome");
-                String email = resultSet.getString("email");
-                String senha = resultSet.getString("senha");
-                String tipo = resultSet.getString("tipo");
-                String cnpj = resultSet.getString("cnpj");
-                String descricaoAgencia = resultSet.getString("descricao");
-                Agencia agenciaDomain = new Agencia(idUsuario, nome, email, senha, tipo, cnpj, descricaoAgencia);
-
-                
-                String destinoCidade = resultSet.getString("destino_cidade");
-                String destinoEstado = resultSet.getString("destino_estado");
-                String destinoPais = resultSet.getString("destino_pais");
-                Timestamp dataPartidaPacote = resultSet.getTimestamp("data_partida");
-                Integer duracaoDias = resultSet.getInt("duracao_dias");
-                Float valor = resultSet.getFloat("valor");
-                String descricao = resultSet.getString("descricao");
-                Integer qtdFotos = resultSet.getInt("qtd_foto");
-
-                Destino destinoModel = new Destino(destinoCidade, destinoEstado, destinoPais);
-
-                List<Foto> fotos = new FotoDAO().getAllById(id);
-
-                pacote = new PacoteTuristico(id, agenciaDomain, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos, fotos);
-            }
-
-            resultSet.close();
-            statement.close();
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return pacote;
     }
 }

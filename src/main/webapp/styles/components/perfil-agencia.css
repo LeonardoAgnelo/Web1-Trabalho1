@@ -9,6 +9,7 @@
     border: none !important;
     color: var(--primary);
     margin-bottom: 54px;
+    display: block;
 }
 
 .botao-pacotesvigentes:hover{

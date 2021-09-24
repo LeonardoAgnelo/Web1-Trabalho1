@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class PacoteTuristico {
-    private Integer id;
+    private Long id;
     private Agencia agencia;
     private Destino destino;
     private Timestamp dataPartida;
@@ -14,7 +14,7 @@ public class PacoteTuristico {
     private Integer qtdFotos;
     private List<Foto> fotos;
 
-    public PacoteTuristico(Integer id, Agencia agencia, Destino destino, Timestamp dataPartida, Integer duracaoDias,
+    public PacoteTuristico(Long id, Agencia agencia, Destino destino, Timestamp dataPartida, Integer duracaoDias,
             Float valor, String descricao, Integer qtdFotos, List<Foto> fotos) {
         this.setId(id);
         this.setAgencia(agencia);
@@ -40,11 +40,11 @@ public class PacoteTuristico {
         this.setFotos(fotos);
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

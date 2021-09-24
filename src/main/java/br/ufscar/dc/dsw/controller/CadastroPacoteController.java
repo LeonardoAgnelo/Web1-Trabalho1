@@ -110,7 +110,7 @@ public class CadastroPacoteController extends HttpServlet {
         
                 dao.insert(pacoteTuristico);
 
-                response.sendRedirect("perfil.jsp");
+                response.sendRedirect("/perfil");
             } else {
                 request.setAttribute("mensagens", erros);
 

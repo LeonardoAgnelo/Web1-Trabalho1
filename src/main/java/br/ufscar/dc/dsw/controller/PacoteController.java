@@ -31,22 +31,11 @@ public class PacoteController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
-    	//Erro erros = new Erro();
+        String id = request.getParameter("id");
 
-        if (usuario == null) {
-            response.sendRedirect("/ExcellentVoyage/login.jsp");
-        } else if (usuario.getTipo().equals("cliente")){
-            Integer id =Integer.parseInt(request.getParameter("id"));
-
-            PacoteTuristico pacote = pDAO.getById(id);
-            request.setAttribute("pacote", pacote);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("pacote.jsp");
-			dispatcher.forward(request, response);
-
-        }else{
-            response.sendRedirect("/ExcellentVoyage/index.jsp");
-        }
-
+        PacoteTuristico pacote = pDAO.getById(id);
+        request.setAttribute("pacote", pacote);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("pacote.jsp");
+        dispatcher.forward(request, response);
     }
 }
