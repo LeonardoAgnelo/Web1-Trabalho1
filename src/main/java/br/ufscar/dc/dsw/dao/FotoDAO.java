@@ -20,7 +20,7 @@ public class FotoDAO extends GenericDAO {
             PreparedStatement statement = conn.prepareStatement(sql);;
 
             statement = conn.prepareStatement(sql);
-            statement.setInt(1, foto.getIdPacote());
+            statement.setLong(1, foto.getIdPacote());
             statement.setString(2, foto.getUrl());
             statement.executeUpdate();
 
@@ -43,7 +43,7 @@ public class FotoDAO extends GenericDAO {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                Integer id = resultSet.getInt("id_pacote");
+                Long id = resultSet.getLong("id_pacote");
                 String url = resultSet.getString("url");
     
                 Foto foto = new Foto(id, url);

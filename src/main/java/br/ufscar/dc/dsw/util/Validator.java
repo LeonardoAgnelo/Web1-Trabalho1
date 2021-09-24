@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.Part;
+
+import org.apache.commons.io.FilenameUtils;
+
 public class Validator<T> {
     private final String nomeCampo;
     private final T valor;
@@ -18,6 +22,26 @@ public class Validator<T> {
 
     public Validator<T> required() {
         if (valor == null || valor.toString().isEmpty()) {
+            erros.add(nomeCampo + " não informado!");
+        }
+
+        return this;
+    }
+
+    public Validator<T> requiredFile() {
+        Part valorArquivo = (Part) valor;
+
+        if (valorArquivo.getSize() == 0) {
+            erros.add(nomeCampo + " não informado!");
+        }
+
+        return this;
+    }
+
+    public Validator<T> requiredList() {
+        List<?> lista = (List<?>) valor;
+
+        if (lista.size() == 0) {
             erros.add(nomeCampo + " não informado!");
         }
 
@@ -39,6 +63,28 @@ public class Validator<T> {
     public Validator<T> compare(String value) {
         if (!value.equals(valor)) {
             erros.add(nomeCampo + " diferente!");
+        }
+
+        return this;
+    }
+
+    public Validator<T> pdf() {
+        Part valorArquivo = (Part) valor;
+        String nomeArquivo = valorArquivo.getSubmittedFileName();
+        String extensao = getExtension(nomeArquivo);
+        if (!extensao.equals("pdf")) {
+            erros.add(nomeCampo + " do " + nomeArquivo + " deve ser um PDF! e nãu um " + extensao);
+        }
+
+        return this;
+    }
+
+    public Validator<T> image() {
+        Part valorArquivo = (Part) valor;
+        String nomeArquivo = valorArquivo.getSubmittedFileName();
+        String extensao = getExtension(nomeArquivo);
+        if (!extensao.equals("jpg") && !extensao.equals("png")) {
+            erros.add(nomeCampo + " deve ser um JPG ou PNG! e não um " + extensao);
         }
 
         return this;
@@ -66,5 +112,18 @@ public class Validator<T> {
         }
 
         return erro;
+    }
+
+    private String getExtension(String nomeArquivo) {
+        String extension = "";
+
+        int i = nomeArquivo.lastIndexOf('.');
+        int p = Math.max(nomeArquivo.lastIndexOf('/'), nomeArquivo.lastIndexOf('\\'));
+
+        if (i > p) {
+            extension = nomeArquivo.substring(i+1);
+        }
+
+        return extension;
     }
 }

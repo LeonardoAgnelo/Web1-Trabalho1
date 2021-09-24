@@ -29,7 +29,7 @@
                 </ul>
             </div>
         </c:if>
-        <form class="form-cadastro-cliente" action="cadastroCliente" method="POST" >
+        <form class="form-cadastro-cliente" action="cadastroPacote" method="POST" enctype="multipart/form-data">
             <h1>Adicionar pacote</h1>
             <div class="campos">
                 <div class="campo-container">
@@ -54,17 +54,15 @@
                 </div>
                 <div class="campo-container">
                     <label for="duracao">Duração (em dias)</label>
-                    <input class="campo" id="duracao" name="duracao" type="text" value="${duracao}"/>
+                    <input class="campo" id="duracao" name="duracao" type="number" value="${duracao}"/>
                 </div>
                 <div class="campo-container">
                     <label for="descricao">Descrição</label>
-                    <input type="hidden" id="descricao" name="descricao" value="${descricao}" />
-                    <input type="file"/>
+                    <input type="file" id="descricao" name="descricao" value="${descricao}"/>
                 </div>
                 <div class="campo-container">
-                    <label for="foto">Fotos</label>
-                    <input type="hidden" id="foto" name="foto" value="${foto}" />
-                    <input type="file"/>
+                    <label for="fotos">Fotos</label>
+                    <input type="file" id="fotos" name="fotos" multiple />
                 </div>
             </div>
             <input class="submit" type="submit" name="bOK" value="Adicionar" />

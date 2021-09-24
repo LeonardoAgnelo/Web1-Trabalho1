@@ -34,11 +34,47 @@ public class PacoteTuristicoDAO extends GenericDAO {
             statement.setInt(9, pacoteTuristico.getQtdFotos());
             statement.executeUpdate();
 
+            if (pacoteTuristico.getQtdFotos() > 0) {
+                Long idPacote = getLastInsertId();
+
+                FotoDAO fotoDao = new FotoDAO();
+
+                for(Foto foto : pacoteTuristico.getFotos()) {
+                    foto.setIdPacote(idPacote);
+                    fotoDao.insert(foto);
+                }
+            }
+
             statement.close();
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Long getLastInsertId() {
+        String sql = "SELECT MAX(id) as id FROM pacote_turistico";
+
+        Long id = null;
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement = conn.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()) {
+                id = resultSet.getLong("id");
+            }
+
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return id;
     }
 
     public List<PacoteTuristico> getAll(String destino, String agencia, Timestamp dataPartida) {
