@@ -54,8 +54,7 @@ public class PerfilController extends HttpServlet {
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("perfil.jsp");
             dispatcher.forward(request, response);     
-    	}else if (usuario.getTipo().equals("agencia")){
-            
+    	}else if (usuario.getTipo().equals("agencia")){      
             RequestDispatcher dispatcher = request.getRequestDispatcher("perfil.jsp");
             dispatcher.forward(request, response);
         }

@@ -11,6 +11,10 @@ public class Usuario {
     private String senha;
     private String tipo;
 
+    public Usuario(Long id){
+        this.setId(id);
+    }
+
     public Usuario(Long id, String nome, String email, String senha, String tipo) {
         this.id = id;
         this.nome = nome;

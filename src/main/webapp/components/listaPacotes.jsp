@@ -19,12 +19,12 @@
                     <c:when test="${param.comprar}">
                         <div class="pacote-compra">
                             <span><fmt:message key="listapacote.moeda"/> ${pacote.valor}</span>
-                            <a href="pacote.jsp?id=${pacote.id}"> <fmt:message key="listapacote.comprar"/> </a>
+                            <a href="pacote?id=${pacote.id}"> <fmt:message key="listapacote.comprar"/> </a>
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div class="pacote-ver">
-                            <a href="pacote.jsp?id=${pacote.id}"> <fmt:message key="listapacote.detalhes"/> </a>
+                            <a href="pacote?id=${pacote.id}"> <fmt:message key="listapacote.detalhes"/> </a>
                         </div>
                     </c:otherwise>
                 </c:choose>

@@ -140,4 +140,51 @@ public class PacoteTuristicoDAO extends GenericDAO {
 
         return listaPacotesTuristicos;
     }
+    public PacoteTuristico getById(Integer id) {
+        String sql = "SELECT * FROM pacote_turistico p, agencia a, usuario u WHERE p.id = ?  AND a.cnpj=p.cnpj_agencia  and a.id_usuario=u.id";
+        PacoteTuristico pacote = null;
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                Long idUsuario = resultSet.getLong("id_usuario");
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String tipo = resultSet.getString("tipo");
+                String cnpj = resultSet.getString("cnpj");
+                String descricaoAgencia = resultSet.getString("descricao");
+                Agencia agenciaDomain = new Agencia(idUsuario, nome, email, senha, tipo, cnpj, descricaoAgencia);
+
+                
+                String destinoCidade = resultSet.getString("destino_cidade");
+                String destinoEstado = resultSet.getString("destino_estado");
+                String destinoPais = resultSet.getString("destino_pais");
+                Timestamp dataPartidaPacote = resultSet.getTimestamp("data_partida");
+                Integer duracaoDias = resultSet.getInt("duracao_dias");
+                Float valor = resultSet.getFloat("valor");
+                String descricao = resultSet.getString("descricao");
+                Integer qtdFotos = resultSet.getInt("qtd_foto");
+
+                Destino destinoModel = new Destino(destinoCidade, destinoEstado, destinoPais);
+
+                List<Foto> fotos = new FotoDAO().getAllById(id);
+
+                pacote = new PacoteTuristico(id, agenciaDomain, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos, fotos);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return pacote;
+    }
 }
