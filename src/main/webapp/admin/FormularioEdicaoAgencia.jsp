@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><fmt:message key="cadastro.title"/> | Excellent Voyage</title>
+    <title><fmt:message key='admin.editar'/> | Excellent Voyage</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/cadastro-agencia.css" />
     <script type="text/javascript">
@@ -32,7 +32,7 @@
             </div>
         </c:if>
         <form class="form-cadastro-cliente" action="AgenciaUpdate" method="POST" >
-            <h1><fmt:message key="cadastro.title"/></h1>
+            <h1><fmt:message key='admin.editar'/></h1>
             <div class="campos">
                 <div class="campo-container">
                     <label for="nome"><fmt:message key="cadastro.nome"/></label>
@@ -63,7 +63,7 @@
                     <input class="campo" id="id" name="id" type="text" readonly="readonly" value="${agencia.id}"/>
                 </div>
             </div>
-            <input class="submit" type="submit" name="bOK" value="<fmt:message key='cadastro.cadastrar'/>" />
+            <input class="submit" type="submit" name="bOK" value="<fmt:message key='admin.editar'/>" />
         </form>
     </div>
 </body>
