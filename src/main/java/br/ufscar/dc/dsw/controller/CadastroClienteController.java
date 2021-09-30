@@ -51,10 +51,11 @@ public class CadastroClienteController extends HttpServlet{
                 Cliente cliente = new Cliente(nome, email, senha, "cliente", cpf, telefone, sexo, dataNascimento);
 
                 UsuarioDAO usuarioDao = new UsuarioDAO();
-                Long idCliente = usuarioDao.getIdByEmail(email);
-        
-                cliente.setId(idCliente);
+                
                 dao.insert(cliente);
+
+                Long idCliente = usuarioDao.getIdByEmail(email);
+                cliente.setId(idCliente);
 
                 request.getSession().setAttribute("usuarioLogado", cliente);
                 response.sendRedirect("index.jsp");
