@@ -48,7 +48,7 @@
                 </div>
                 <div class="campo-container">
                     <label for="cpf"><fmt:message key="cadastro.cpf"/></label>
-                    <input class="campo" id="cpf" naEditarme="cpf" type="text" value="${cliente.cpf}"/>
+                    <input class="campo" id="cpf" name="cpf" type="text" value="${cliente.cpf}"/>
                 </div>
                 <div class="campo-container">
                     <label for="telefone"><fmt:message key="cadastro.telefone"/></label>

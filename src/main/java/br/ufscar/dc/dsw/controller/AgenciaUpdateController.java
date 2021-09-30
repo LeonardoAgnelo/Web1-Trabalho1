@@ -1,10 +1,6 @@
 package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,7 +53,6 @@ public class AgenciaUpdateController extends HttpServlet{
 
         response.sendRedirect("perfil");
     } else {
-        request.getSession().invalidate();
 
         request.setAttribute("mensagens", erros);
 
@@ -67,7 +62,7 @@ public class AgenciaUpdateController extends HttpServlet{
         request.setAttribute("cnpj", cnpj);
         request.setAttribute("descricao", descricao);
 
-        RequestDispatcher rd = request.getRequestDispatcher("admin/FormularioEdicaoAgencia.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("AgenciaEditar");
         rd.forward(request, response);
 
     }

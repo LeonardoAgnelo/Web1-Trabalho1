@@ -44,14 +44,14 @@ public class ClienteUpdateController extends HttpServlet{
     String senha = request.getParameter("senha");
     String confirmarSenha = request.getParameter("confirmar-senha");
 
-    erros = new Validator("Nome", nome).required().addErro(erros);
-    erros = new Validator("Email", email).required().email().addErro(erros);
-    erros = new Validator("CPF", cpf).required().addErro(erros);
-    erros = new Validator("Telefone", telefone).required().addErro(erros);
-    erros = new Validator("Sexo", sexo).required().addErro(erros);
-    erros = new Validator("Data de nascimento", dataNascimentoParam).required().addErro(erros);
-    erros = new Validator("Senha", senha).required().addErro(erros);
-    erros = new Validator("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
+    erros = new Validator<String>("Nome", nome).required().addErro(erros);
+    erros = new Validator<String>("Email", email).required().email().addErro(erros);
+    erros = new Validator<String>("cpf", cpf).required().addErro(erros);
+    erros = new Validator<String>("Telefone", telefone).required().addErro(erros);
+    erros = new Validator<String>("Sexo", sexo).required().addErro(erros);
+    erros = new Validator<String>("Data de nascimento", dataNascimentoParam).required().addErro(erros);
+    erros = new Validator<String>("Senha", senha).required().addErro(erros);
+    erros = new Validator<String>("Confirmação de senha", confirmarSenha).required().compare(senha).addErro(erros);
 
     Timestamp dataNascimento = null;
     
@@ -72,18 +72,18 @@ public class ClienteUpdateController extends HttpServlet{
 
         response.sendRedirect("perfil");
     } else {
-        request.getSession().invalidate();
+        //request.getSession().invalidate();
 
         request.setAttribute("mensagens", erros);
 
         request.setAttribute("nome", nome);
         request.setAttribute("email", email);
-        request.setAttribute("cpf", cpf);
+        request.setAttribute("CPF", cpf);
         request.setAttribute("telefone", telefone);
         request.setAttribute("sexo", sexo);
         request.setAttribute("dataNascimento", dataNascimentoParam);
 
-        RequestDispatcher rd = request.getRequestDispatcher("admin/FormularioEdicaoCliente.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("ClienteEditar");
         rd.forward(request, response);
 
     }
