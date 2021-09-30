@@ -21,6 +21,8 @@ public class IndexController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         PacoteTuristicoDAO pacoteDao = new PacoteTuristicoDAO();
 
         String destino = request.getParameter("destino");

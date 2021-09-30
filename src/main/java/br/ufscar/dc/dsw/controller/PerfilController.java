@@ -39,6 +39,8 @@ public class PerfilController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
     	//Erro erros = new Erro();
 

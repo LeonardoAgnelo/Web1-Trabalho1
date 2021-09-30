@@ -56,7 +56,7 @@
                 </div>
                 <div class="campo-container">
                     <label for="duracao"><fmt:message key="pacote.duracao"/></label>
-                    <input class="campo" id="duracao" name="duracao" type="number" value="${duracao}"/>
+                    <input class="campo" id="duracao" name="duracao-dias" type="number" value="${duracaoDias}"/>
                 </div>
                 <div class="campo-container">
                     <label for="descricao"><fmt:message key="pacote.descricao"/></label>

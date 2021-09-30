@@ -21,6 +21,8 @@ public class CadastroAgenciaController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         Erro erros = new Erro();
         if (request.getParameter("bOK") != null) {
             String nome = request.getParameter("nome");

@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
@@ -44,6 +45,8 @@ public class CadastroPacoteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         Erro erros = new Erro();
         if (request.getParameter("bOK") != null) {
             String cidade = request.getParameter("cidade");
@@ -110,7 +113,7 @@ public class CadastroPacoteController extends HttpServlet {
         
                 dao.insert(pacoteTuristico);
 
-                response.sendRedirect("/perfil");
+                response.sendRedirect("perfil");
             } else {
                 request.setAttribute("mensagens", erros);
 
@@ -119,9 +122,9 @@ public class CadastroPacoteController extends HttpServlet {
                 request.setAttribute("estado", estado);
                 request.setAttribute("pais", pais);
                 if (dataPartida != null) {
-                    request.setAttribute("data-partida", dataPartida.toString());
+                    request.setAttribute("dataPartida", request.getParameter("data-partida"));
                 }
-                request.setAttribute("duracao-dias", duracaoDias);
+                request.setAttribute("duracaoDias", duracaoDias);
                 request.setAttribute("valor", valor);
                 request.setAttribute("descricao", descricao);
 
