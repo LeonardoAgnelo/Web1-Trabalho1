@@ -1,34 +1,34 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="br.ufscar.dc.dsw.util.Util" %>
 
 <%
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
 
 <main>
+<fmt:bundle basename="message">
     <div class="texto-inicio">
         <h1>
-            Olá ${sessionScope.usuarioLogado.nome},
+            Olá ${sessionScope.usuarioLogado.nome}
         </h1>
-        <p>
-            Lembre-se das suas viagens...
-        </p>
     </div>
     
-<div align="center">
-		<table border="1">
-			<caption>Lista de Clientes</caption>
+	<div>
+		<table>
+			<caption><fmt:message key="admin.listaClientes"/></caption>
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
-				<th>CPF</th>
-				<th>Email</th>
-				<th>Sexo</th>
-				<th>Telefone</th>
-				<th>Data nascimneto</th>
-				<th>Editar</th>
-				<th>Remover</th>
+				<th><fmt:message key="cadastro.nome"/></th>
+				<th><fmt:message key="cadastro.cpf"/></th>
+				<th><fmt:message key="cadastro.email"/></th>
+				<th><fmt:message key="cadastro.sexo"/></th>
+				<th><fmt:message key="cadastro.telefone"/></th>
+				<th><fmt:message key="cadastro.nascimento"/></th>
+				<th><fmt:message key="admin.editar"/></th>
+				<th><fmt:message key="admin.remover"/></th>
 
 			</tr>
 			<c:forEach var="Cliente" items="${requestScope.listaCliente}">
@@ -39,26 +39,26 @@
 					<td>${Cliente.email}</td>
 					<td>${Cliente.sexo}</td>
 					<td>${Cliente.telefone}</td>
-                    <td>${Cliente.dataNascimento}</td>
-					<td><a href="/<%=contextPath%>/ClienteEditar?id=${Cliente.id}">Edição </a></td>
+                    <td>${Util.convertTimestampToString(Cliente.dataNascimento)}</td>
+					<td><a href="/<%=contextPath%>/ClienteEditar?id=${Cliente.id}"><fmt:message key="admin.editar"/></a></td>
 					<td><a href="/<%= contextPath%>/UsuarioDelete?id=${Cliente.id}"
-						onclick="return confirm('Tem certeza de que deseja excluir este usuário?');">Remover </a></td>
+						onclick="return confirm('Tem certeza de que deseja excluir este usuário?');"><fmt:message key="admin.remover"/></a></td>
 
 			    </tr>
             </c:forEach>
-</div>
+		</table>
+	</div>
 
-<div align="center">
-
-            <table border="1">
-			<caption>Lista de Agencia</caption>
+	<div>
+        <table>
+			<caption style="margin-top: 30px;"><fmt:message key="admin.listaAgencias"/></caption>
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
-				<th>CNPJ</th>
-				<th>Email</th>
-				<th>Editar</th>
-				<th>Remover</th>
+				<th><fmt:message key="cadastro.nome"/></th>
+				<th><fmt:message key="cadastro.cnpj"/></th>
+				<th><fmt:message key="cadastro.email"/></th>
+				<th><fmt:message key="admin.editar"/></th>
+				<th><fmt:message key="admin.remover"/></th>
 
 			</tr>
 			<c:forEach var="Agencia" items="${requestScope.listaAgencia}">
@@ -67,12 +67,12 @@
 					<td>${Agencia.nome}</td>
 					<td>${Agencia.cnpj}</td>
 					<td>${Agencia.email}</td>
-                    <td><a href="/<%=contextPath%>/AgenciaEditar?id=${Agencia.id}">Edição </a></td>
+                    <td><a href="/<%=contextPath%>/AgenciaEditar?id=${Agencia.id}"><fmt:message key="admin.editar"/></a></td>
                     <td><a href="/<%= contextPath%>/UsuarioDelete?id=${Agencia.id}"
-						onclick="return confirm('Tem certeza de que deseja excluir este usuário?');">Remover </a></td>
-                    
+						onclick="return confirm('Tem certeza de que deseja excluir este usuário?');"><fmt:message key="admin.remover"/></a></td>
 			    </tr>
 			</c:forEach>
 		</table>
 	</div>
+</fmt:bundle>
 </main>

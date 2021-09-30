@@ -31,7 +31,7 @@ public class FotoDAO extends GenericDAO {
         }
     }
 
-    public List<Foto> getAllById(Integer idPacote) {
+    public List<Foto> getAllById(Long idPacote) {
 
         List<Foto> listaFoto = new ArrayList<>();
 

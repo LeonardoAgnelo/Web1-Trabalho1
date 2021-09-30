@@ -32,6 +32,8 @@ public class ClienteEditarController extends HttpServlet{
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 		throws ServletException, IOException {
+			request.setCharacterEncoding("UTF-8");
+
 			Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
 
 			if (usuario == null) {

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.domain.Cliente;
+import br.ufscar.dc.dsw.domain.PacoteTuristico;
 import br.ufscar.dc.dsw.domain.Agencia;
 import br.ufscar.dc.dsw.dao.ClienteDAO;
+import br.ufscar.dc.dsw.dao.PacoteTuristicoDAO;
 import br.ufscar.dc.dsw.dao.AgenciaDAO;
 //import br.ufscar.dc.dsw.util.Erro;
 
@@ -21,11 +23,13 @@ public class PerfilController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 	private ClienteDAO cDAO;
 	private AgenciaDAO aDAO;
+	private PacoteTuristicoDAO pDAO;
 
 	@Override
     public void init() {
 		cDAO = new ClienteDAO();
 		aDAO = new AgenciaDAO();
+        pDAO = new PacoteTuristicoDAO();
     }
 
     @Override
@@ -35,6 +39,8 @@ public class PerfilController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
     	//Erro erros = new Erro();
 
@@ -54,7 +60,16 @@ public class PerfilController extends HttpServlet {
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("perfil.jsp");
             dispatcher.forward(request, response);     
-    	}else if (usuario.getTipo().equals("agencia")){      
+    	}else if (usuario.getTipo().equals("agencia")){
+            Agencia agencia = (Agencia) usuario;
+            String vigenteParam = request.getParameter("vigente");
+            Boolean vigente = false;
+            if (vigenteParam != null && !vigenteParam.isEmpty()) {
+                vigente = vigenteParam.equals("1");
+            }
+            List<PacoteTuristico> listaPacotes = pDAO.getByAgencia(agencia, vigente);
+            request.setAttribute("listaPacotes", listaPacotes);
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("perfil.jsp");
             dispatcher.forward(request, response);
         }

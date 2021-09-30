@@ -14,12 +14,17 @@
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/home.css" />
     <link rel="stylesheet" href="styles/pacote.css" />
+    <script type="text/javascript">
+        var usuario = "<%= session.getAttribute("usuarioLogado")%>";
+        if (usuario === "null") {
+            window.location.href="login.jsp";
+        }
+    </script>
 </head>
 <body>
     <div class="home-container box">
         <jsp:include page="components/navbar.jsp" />
         <main>
-
             <div class="pacote-container">
             
                 <div class="lista-fotos" var="fotos" items="${pacote.fotos}">
@@ -48,9 +53,20 @@
                             <p><fmt:message key="pacote.descricao"/></p>
                             <h3 href="${pacote.descricao}"> <fmt:message key="pacote.descricao"/></h3>
                         </div>
-                        <div class="pacote-compra">
-                            <a href="/compra/${pacote.id}"><fmt:message key="pacote.comprar"/></a>
-                        </div>
+                        <c:if test="${sessionScope.usuarioLogado.tipo == 'cliente'}">
+                            <c:choose>
+                                <c:when test="${jacomprou}">
+                                    <div class="pacote-compra">
+                                        <span><fmt:message key="pacote.compraRealizada"/></span>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <form class="pacote-compra" action="pacote?id=${param.id}&comprou=1" method="POST">
+                                        <input type="submit" name="comprar" value="<fmt:message key='pacote.comprar'/>"/>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                 </div>
             </div>
         </main>

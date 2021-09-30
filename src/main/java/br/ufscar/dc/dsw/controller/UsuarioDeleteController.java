@@ -31,11 +31,12 @@ public class UsuarioDeleteController extends HttpServlet{
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 		throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 
-                Long id = Long.parseLong(request.getParameter("id"));
-		
-				Usuario usuario = new Usuario(id);
-				dao.delete(usuario);
-				response.sendRedirect("perfil");
+		Long id = Long.parseLong(request.getParameter("id"));
+
+		Usuario usuario = new Usuario(id);
+		dao.delete(usuario);
+		response.sendRedirect("perfil");
     }
 }

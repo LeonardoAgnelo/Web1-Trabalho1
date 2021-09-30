@@ -20,9 +20,18 @@
     </div>
     
     <div class="pacotes-container">
-        <button type="submit" class="botao-pacotesvigentes">
-            <fmt:message key="agencia.pacotesVigentes"/>
-        </button>
+        <c:choose>
+            <c:when test="${param.vigente == '1'}">
+                <a type="submit" class="botao-pacotesvigentes" href="?">
+                    <fmt:message key="agencia.pacotes"/>
+                </a>
+            </c:when>
+            <c:otherwise>
+                <a type="submit" class="botao-pacotesvigentes" href="?vigente=1">
+                    <fmt:message key="agencia.pacotesVigentes"/>
+                </a>
+            </c:otherwise>
+        </c:choose>
         <jsp:include page="listaPacotes.jsp">
             <jsp:param name="comprar" value="false" />
         </jsp:include>
