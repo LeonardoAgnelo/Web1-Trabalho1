@@ -57,6 +57,9 @@ public class PerfilController extends HttpServlet {
     		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil.jsp");
             dispatcher.forward(request, response);
     	} else if(usuario.getTipo().equals("cliente")){
+            Cliente cliente = (Cliente) usuario;
+            List<PacoteTuristico> listaPacotes = pDAO.getByCliente(cliente);
+            request.setAttribute("listaPacotes", listaPacotes);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("perfil.jsp");
             dispatcher.forward(request, response);     

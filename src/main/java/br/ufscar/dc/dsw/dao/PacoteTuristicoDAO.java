@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufscar.dc.dsw.domain.Agencia;
+import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Destino;
 import br.ufscar.dc.dsw.domain.Foto;
 import br.ufscar.dc.dsw.domain.PacoteTuristico;
@@ -160,6 +161,46 @@ public class PacoteTuristicoDAO extends GenericDAO {
                 List<Foto> fotos = new FotoDAO().getAllById(id);
 
                 PacoteTuristico pacote = new PacoteTuristico(id, agencia, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos, fotos);
+
+                listaPacotes.add(pacote);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return listaPacotes;
+    }
+
+    public List<PacoteTuristico> getByCliente(Cliente cliente) {
+        String sql = "SELECT * FROM pacote_turistico p, compra c WHERE p.id = c.id_pacote AND c.id_cliente =" + cliente.getId();
+
+        List<PacoteTuristico> listaPacotes =  new ArrayList<>();
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String destinoCidade = resultSet.getString("destino_cidade");
+                String destinoEstado = resultSet.getString("destino_estado");
+                String destinoPais = resultSet.getString("destino_pais");
+                Timestamp dataPartidaPacote = resultSet.getTimestamp("data_partida");
+                Integer duracaoDias = resultSet.getInt("duracao_dias");
+                Float valor = resultSet.getFloat("valor");
+                String descricao = resultSet.getString("descricao");
+                Integer qtdFotos = resultSet.getInt("qtd_foto");
+
+                Destino destinoModel = new Destino(destinoCidade, destinoEstado, destinoPais);
+
+                List<Foto> fotos = new FotoDAO().getAllById(id);
+
+                PacoteTuristico pacote = new PacoteTuristico(id, null, destinoModel, dataPartidaPacote, duracaoDias, valor, descricao, qtdFotos, fotos);
 
                 listaPacotes.add(pacote);
             }
