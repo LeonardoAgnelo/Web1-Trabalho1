@@ -49,7 +49,7 @@
                             <p><fmt:message key="pacote.duracao"/></p>
                             <h3>${pacote.duracaoDias}</h3>
                             <p><fmt:message key="pacote.descricao"/></p>
-                            <h3 href="${pacote.descricao}"> <fmt:message key="pacote.descricao"/></h3>
+                            <a href="${pacote.descricao}"> <fmt:message key="pacote.descricao"/></a>
                         </div>
                         <c:if test="${sessionScope.usuarioLogado.tipo == 'cliente'}">
                             <c:choose>
