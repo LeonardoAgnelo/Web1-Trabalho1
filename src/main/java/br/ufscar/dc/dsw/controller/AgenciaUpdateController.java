@@ -53,7 +53,6 @@ public class AgenciaUpdateController extends HttpServlet{
 
         response.sendRedirect("perfil");
     } else {
-        request.getSession().invalidate();
 
         request.setAttribute("mensagens", erros);
 
@@ -63,7 +62,7 @@ public class AgenciaUpdateController extends HttpServlet{
         request.setAttribute("cnpj", cnpj);
         request.setAttribute("descricao", descricao);
 
-        RequestDispatcher rd = request.getRequestDispatcher("admin/FormularioEdicaoAgencia.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("AgenciaEditar");
         rd.forward(request, response);
 
     }
