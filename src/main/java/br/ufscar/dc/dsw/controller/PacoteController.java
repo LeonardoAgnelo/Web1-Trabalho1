@@ -1,6 +1,7 @@
 package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -68,7 +69,7 @@ public class PacoteController extends HttpServlet {
             if (comprou != null && comprou.equals("1")) {
     
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                java.util.Date date = new java.util.Date();
+                Date date = new Date();
                 date.setTime(date.getTime() + 1000 * 60 * 60 * 24 * 7);
                 String dataReuniaoDate = dateFormat.format(date);
 
@@ -88,7 +89,7 @@ public class PacoteController extends HttpServlet {
 
                 String body = "<div>" +
                     "<h1>" + cliente.getNome() + " efetuou uma compra para " + pacote.getDestino().getCidade() + "</h1>" +
-                    "<p>Uma reunião foi marcada para o dia " + Util.convertTimestampToString(pacote.getDataPartida()) +" as 19h</p>" +
+                    "<p>Uma reunião foi marcada para o dia " + Util.convertTimestampToString(dataReuniao) +" as 19h</p>" +
                     "<p>Link da reunião: " + linkReuniao + "</p>" +
                 "</div>";
 
