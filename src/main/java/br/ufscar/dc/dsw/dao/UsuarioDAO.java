@@ -70,8 +70,8 @@ public class UsuarioDAO extends GenericDAO{
         }
     }
 
-    public Integer getIdByEmail(String email){
-        Integer id = -1;
+    public Long getIdByEmail(String email){
+        Long id = null;
 
         String sql = "SELECT id FROM usuario u WHERE u.email = ?";
 
@@ -82,7 +82,7 @@ public class UsuarioDAO extends GenericDAO{
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                id = resultSet.getInt("id");
+                id = resultSet.getLong("id");
             }
             resultSet.close();
             statement.close();

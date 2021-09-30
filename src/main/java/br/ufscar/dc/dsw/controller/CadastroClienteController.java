@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.ClienteDAO;
+import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.util.Erro;
 import br.ufscar.dc.dsw.util.Util;
@@ -48,7 +49,11 @@ public class CadastroClienteController extends HttpServlet{
             if (!erros.isExisteErros()) {
                 ClienteDAO dao = new ClienteDAO();
                 Cliente cliente = new Cliente(nome, email, senha, "cliente", cpf, telefone, sexo, dataNascimento);
+
+                UsuarioDAO usuarioDao = new UsuarioDAO();
+                Long idCliente = usuarioDao.getIdByEmail(email);
         
+                cliente.setId(idCliente);
                 dao.insert(cliente);
 
                 request.getSession().setAttribute("usuarioLogado", cliente);
