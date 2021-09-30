@@ -61,6 +61,7 @@
                                     </div>
                                 </c:when>
                                 <c:otherwise>
+                                    <p>${jacomprou}</p>
                                     <form class="pacote-compra" action="pacote?id=${param.id}&comprou=1" method="POST">
                                         <input type="submit" name="comprar" value="<fmt:message key='pacote.comprar'/>"/>
                                     </form>

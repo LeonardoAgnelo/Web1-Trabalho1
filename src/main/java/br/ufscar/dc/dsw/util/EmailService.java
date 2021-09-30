@@ -1,8 +1,6 @@
 package br.ufscar.dc.dsw.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -22,22 +20,19 @@ public class EmailService {
 
 		try {
 
-			Properties prop = new Properties();
-			InputStream is = Util.class.getClass().getClassLoader().getResourceAsStream("config.properties");
+			Properties props = new Properties();
 
-			if (is != null) {
-				prop.load(is);
-			} else {
-				throw new FileNotFoundException("config.properties not found in the classpath");
-			}
-
-            String username = prop.getProperty("username");
-            String password = prop.getProperty("password");
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class",
+            "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "465");
             
-			Session session = Session.getInstance(prop, new Authenticator() {
+			Session session = Session.getInstance(props, new Authenticator() {
 				@Override
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(username, password);
+					return new PasswordAuthentication("contatoexcellentvoyage@gmail.com", "ExcellentVoyage123");
 				}
 			});
 
@@ -47,7 +42,7 @@ public class EmailService {
 			message.setSubject(subject);
 
 			MimeBodyPart mimeBodyPart = new MimeBodyPart();
-			mimeBodyPart.setContent(body, "text/plain");
+			mimeBodyPart.setContent(body, "text/html; charset=utf-8");
 			
 			Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(mimeBodyPart);

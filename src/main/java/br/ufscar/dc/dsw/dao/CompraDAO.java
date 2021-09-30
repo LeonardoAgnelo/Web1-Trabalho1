@@ -31,9 +31,8 @@ public class CompraDAO extends GenericDAO {
     }
 
     public Boolean verificaCompraClienteByIdPacote(Cliente cliente, String idPacote){
-        String sql = "SELECT *  FROM compra co, cliente cl WHERE co.id_pacote = " + idPacote + " AND co.id_cliente = " + cliente.getId();
+        String sql = "SELECT * FROM compra co, cliente cl WHERE co.id_pacote = " + idPacote + " AND co.id_cliente = " + cliente.getId() + " AND cl.id_usuario = " + cliente.getId();
 
-        
         Boolean comprou = false;
 
         try{
