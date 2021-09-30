@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.AgenciaDAO;
+import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.domain.Agencia;
 import br.ufscar.dc.dsw.util.Erro;
 import br.ufscar.dc.dsw.util.Validator;
@@ -43,6 +44,11 @@ public class CadastroAgenciaController extends HttpServlet{
             if (!erros.isExisteErros()) {
                 AgenciaDAO dao = new AgenciaDAO();
                 Agencia agencia = new Agencia(nome, email, senha, "agencia", cnpj, descricao);
+
+                UsuarioDAO usuarioDao = new UsuarioDAO();
+                Long idAgencia = usuarioDao.getIdByEmail(email);
+        
+                agencia.setId(idAgencia);
 
                 dao.insert(agencia);
 
