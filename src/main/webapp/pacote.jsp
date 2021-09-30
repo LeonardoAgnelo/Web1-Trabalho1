@@ -30,8 +30,6 @@
                 <div class="lista-fotos" var="fotos" items="${pacote.fotos}">
                 <c:forEach  var="fotos" items="${pacote.fotos}">
                         <div class="foto" style="background-image: url('${fotos.url}');"></div>
-                        <!--<div class="foto" style="background-image: url('assets/hero.png');"></div>
-                        <div class="foto" style="background-image: url('assets/hero.png');"></div>-->
                 </c:forEach>
                 </div>       
 
