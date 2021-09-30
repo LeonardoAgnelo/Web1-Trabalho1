@@ -19,7 +19,7 @@ public class ClienteDAO extends GenericDAO {
         //inserir na tabela usuario do banco de dados
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.insert(cliente);
-        Integer id = usuarioDAO.getIdByEmail(cliente.getEmail());
+        Long id = usuarioDAO.getIdByEmail(cliente.getEmail());
 
         try{
             Connection conn = this.getConnection();
@@ -30,7 +30,7 @@ public class ClienteDAO extends GenericDAO {
             statement.setString(2, cliente.getTelefone());
             statement.setString(3, cliente.getSexo());
             statement.setTimestamp(4, cliente.getDataNascimento());
-            statement.setInt(5, id);
+            statement.setLong(5, id);
             statement.executeUpdate();
 
             statement.close();

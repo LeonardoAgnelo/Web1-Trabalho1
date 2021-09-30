@@ -18,7 +18,7 @@ public class AgenciaDAO extends GenericDAO {
         //inserir na tabela usuario do banco de dados
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.insert(agencia);
-        Integer id = usuarioDAO.getIdByEmail(agencia.getEmail());
+        Long id = usuarioDAO.getIdByEmail(agencia.getEmail());
 
         try {
             Connection conn = this.getConnection();
@@ -27,7 +27,7 @@ public class AgenciaDAO extends GenericDAO {
             statement = conn.prepareStatement(sql);
             statement.setString(1, agencia.getCnpj());
             statement.setString(2, agencia.getDescricao());
-            statement.setInt(3, id);
+            statement.setLong(3, id);
             statement.executeUpdate();
 
             statement.close();
