@@ -10,3 +10,34 @@ Executar o comando `source <local armazenado>\Web1-Trabalho1\src\db\MySql\crate.
 
 o banco de dados é criado e populado apenas com o usuario administrador que possui o `email: admin@admin.com` e `senha: admin`
 
+R1: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
+
+R2: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
+
+R3: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
+
+R4: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
+
+R5: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
+
+R6: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
+
+R7: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
+
+R8: 
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Samuel (33%), Gabriel (33%) e Leonardo (33%)
